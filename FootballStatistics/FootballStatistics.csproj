@@ -159,6 +159,12 @@
     <Compile Include="AddPlayerPage.Designer.cs">
       <DependentUpon>AddPlayerPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowPlayer.Designer.cs">
+      <DependentUpon>ShowPlayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlayerModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -176,6 +182,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ShowPlayer.resx">
+      <DependentUpon>ShowPlayer.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="libmongocrypt.dylib" />
     <None Include="libmongocrypt.so" />
     <None Include="packages.config" />

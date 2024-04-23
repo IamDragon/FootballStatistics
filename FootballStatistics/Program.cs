@@ -16,16 +16,17 @@ internal static class Program
     static void Main()
     {
         //Connect to db
-        string connectionString = "mongodb://127.0.0.1:28017";
-        string databaseName = "fooballstats";
-        string collectionName = "players";
+        //string connectionString = "mongodb://127.0.0.1:28017";
+        //string databaseName = "fooballstats";
+        //string collectionName = "players";
 
-        var client = new MongoClient(connectionString);
-        var db = client.GetDatabase(databaseName);
+        //var client = new MongoClient(connectionString);
+        //var db = client.GetDatabase(databaseName);
         //var collection = db.GetCollection<Player>(collectionName);
-
+        
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        Application.Run(new AddPlayerPage());
+        //Application.Run(new AddPlayerPage());
+        Application.Run(new ShowPlayer("6627c76f8a2e481468fcf5e6"));
     }
 }

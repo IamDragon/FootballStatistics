@@ -19,14 +19,16 @@ namespace FootballStatistics
         public AddPlayerPage()
         {
             InitializeComponent();
-
-
-
         }
 
         private bool IsDataValid()
         {
-            //parse string to int
+            //Check if all text fields have text
+            if (fullNametxt.Text == "" || nationalitytxt.Text == "" || goalstxt.Text == "" ||
+                shotstakentxt.Text == "" || assiststxt.Text == "" || positiontxt.Text == "")
+                return false;
+
+            //Check if values are ints
             bool goals = int.TryParse(goalstxt.Text, out int _);
             bool shotsTaken = int.TryParse(goalstxt.Text, out int _);
             bool assists = int.TryParse(goalstxt.Text, out int _);
