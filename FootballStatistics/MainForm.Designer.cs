@@ -44,6 +44,7 @@
             this.usernamelbl = new System.Windows.Forms.Label();
             this.passwordtxt = new System.Windows.Forms.TextBox();
             this.usernametxt = new System.Windows.Forms.TextBox();
+            this.logoutbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -186,11 +187,22 @@
             this.usernametxt.Size = new System.Drawing.Size(100, 20);
             this.usernametxt.TabIndex = 12;
             // 
+            // logoutbtn
+            // 
+            this.logoutbtn.Location = new System.Drawing.Point(13, 12);
+            this.logoutbtn.Name = "logoutbtn";
+            this.logoutbtn.Size = new System.Drawing.Size(75, 23);
+            this.logoutbtn.TabIndex = 17;
+            this.logoutbtn.Text = "Log out";
+            this.logoutbtn.UseVisualStyleBackColor = true;
+            this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.logoutbtn);
             this.Controls.Add(this.loginBtn);
             this.Controls.Add(this.passwprdlbl);
             this.Controls.Add(this.usernamelbl);
@@ -232,5 +244,6 @@
         private System.Windows.Forms.Label usernamelbl;
         private System.Windows.Forms.TextBox passwordtxt;
         private System.Windows.Forms.TextBox usernametxt;
+        private System.Windows.Forms.Button logoutbtn;
     }
 }

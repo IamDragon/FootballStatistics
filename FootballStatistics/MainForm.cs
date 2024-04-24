@@ -21,7 +21,7 @@ namespace FootballStatistics
         List<PlayerModel> playerSearchResults = new List<PlayerModel>();
         List<TeamModel> teamSearchResults = new List<TeamModel>();
         UserDataAccess userDataAccess;
-        private  string userID; //logged in userID - Login Form changes this and will have a reference
+        private string userID; //logged in userID - Login Form changes this and will have a reference
         public MainForm()
         {
             InitializeComponent();
@@ -103,6 +103,11 @@ namespace FootballStatistics
 
         private void loginBtn_Click_1(object sender, EventArgs e)
         {
+            Login();
+        }
+
+        private void Login()
+        {
             string userID = userDataAccess.AuthenticateUser(usernametxt.Text, passwordtxt.Text);
             if (userID == "")
             {
@@ -114,12 +119,32 @@ namespace FootballStatistics
                 MessageBox.Show("Log in successful");
                 this.userID = userID;
                 usernametxt.Hide();
+                usernametxt.Text = "";
                 usernamelbl.Hide();
                 passwordtxt.Hide();
+                passwordtxt.Text = "";
                 passwprdlbl.Hide();
                 loginBtn.Hide();
                 signupBtn.Hide();
+                logoutbtn.Show();
             }
+        }
+
+        private void logoutbtn_Click(object sender, EventArgs e)
+        {
+            LogOut();
+        }
+
+        private void LogOut()
+        {
+            userID = "";
+            usernametxt.Show();
+            usernamelbl.Show();
+            passwordtxt.Show();
+            passwprdlbl.Show();
+            loginBtn.Show();
+            signupBtn.Show();
+            logoutbtn.Hide();
         }
     }
 }
