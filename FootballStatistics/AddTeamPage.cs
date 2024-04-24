@@ -12,9 +12,12 @@ namespace FootballStatistics
 {
     public partial class AddTeamPage : Form
     {
+        private TeamDataAccess teamDataAccess;
         public AddTeamPage()
         {
             InitializeComponent();
+
+            teamDataAccess = new TeamDataAccess();
         }
 
         private void AddTeamPage_Load(object sender, EventArgs e)
@@ -50,9 +53,17 @@ namespace FootballStatistics
             goalstxt.Text = string.Empty;
         }
 
-        private void AddTeamAsync()
+        private async void AddTeamAsync()
         {
-
+            await teamDataAccess.AddTeamAsync(new TeamModel
+            {
+                TeamName = teamNametxt.Text,
+                Country = countrytxt.Text,
+                Wins = int.Parse(winstxt.Text),
+                Losses = int.Parse(lossestxt.Text),
+                Games = int.Parse(gamesPlayedtxt.Text),
+                Goals = int.Parse(goalstxt.Text)
+            });
         }
 
         private bool IsDataValid()

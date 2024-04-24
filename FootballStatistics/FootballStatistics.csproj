@@ -152,6 +152,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddTeamPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTeamPage.Designer.cs">
+      <DependentUpon>AddTeamPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminModel.cs" />
     <Compile Include="AddPlayerPage.cs">
       <SubType>Form</SubType>
@@ -181,11 +187,15 @@
     <Compile Include="SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TeamDataAccess.cs" />
     <Compile Include="TeamModel.cs" />
     <Compile Include="UserDataAccess.cs" />
     <Compile Include="UserModel.cs" />
     <EmbeddedResource Include="AddPlayerPage.resx">
       <DependentUpon>AddPlayerPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTeamPage.resx">
+      <DependentUpon>AddTeamPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
