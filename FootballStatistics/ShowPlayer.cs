@@ -21,12 +21,12 @@ namespace FootballStatistics
             InitializeComponent();
             playerDataAccess = new PlayerDataAccess();
             this.playerID = playerID;
-            LoadValues();
+            LoadValuesAsync();
         }
 
-        private void LoadValues()
+        private async void LoadValuesAsync()
         {
-            PlayerModel player = playerDataAccess.GetPlayer(playerID);
+            PlayerModel player = await playerDataAccess.GetPlayerAsync(playerID);
             fullnamnelblChange.Text = player.FullName;
             nationalitylblChange.Text = player.Nationality;
             goalslblChange.Text = player.Goals.ToString();

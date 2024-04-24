@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FootballStatistics
 {
@@ -21,34 +22,73 @@ namespace FootballStatistics
             return db.GetCollection<T>(collection);
         }
 
-        public void AddUser(PlayerModel newPlayer)
+        public async Task AddPlayerAsync(PlayerModel newPlayer)
         {
-            var players = ConnectToMongo<PlayerModel>(PlayerCollection);
-            players.InsertOne(newPlayer);
+            try
+            {
+                var players = ConnectToMongo<PlayerModel>(PlayerCollection);
+                await players.InsertOneAsync(newPlayer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while adding player: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
-        private List<PlayerModel> GettAllPlayers()
+        private async Task<List<PlayerModel>> GetAllPlayersAsync()
         {
-            var players = ConnectToMongo<PlayerModel>(PlayerCollection);
-            var results = players.Find(_ => true);
-            return results.ToList();
+            try
+            {
+                var players = ConnectToMongo<PlayerModel>(PlayerCollection);
+                var results = await players.FindAsync(_ => true);
+                return results.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while retrieving all players: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new List<PlayerModel>();
+            }
         }
 
-        public PlayerModel GetPlayer(string playerID)
+        public async Task<PlayerModel> GetPlayerAsync(string playerID)
         {
-            var players = ConnectToMongo<PlayerModel>(PlayerCollection);
-            var result = players.Find<PlayerModel>(p => p.PlayerID == playerID);
-            var list = result.ToList<PlayerModel>();
-            return list.FirstOrDefault();
+            try
+            {
+                var players = ConnectToMongo<PlayerModel>(PlayerCollection);
+                var result = await players.FindAsync<PlayerModel>(p => p.PlayerID == playerID);
+                var list = result.ToList<PlayerModel>();
+                return list.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"An error occurred while retrieving player by ID: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+
+            }
+
+
         }
 
-        public List<PlayerModel> SearchPlayers(string searchString)
+        public async Task<List<PlayerModel>> SearchPlayersAsync(string searchString)
         {
-            var players = ConnectToMongo<PlayerModel>(PlayerCollection);
-            var playerFilter = Builders<PlayerModel>.Filter.Text(searchString);
-            var playerQuery = players.Aggregate().Match(playerFilter);
+            try
+            {
+                var players = ConnectToMongo<PlayerModel>(PlayerCollection);
+                var playerFilter = Builders<PlayerModel>.Filter.Text(searchString);
+                var playerQuery = await players.Aggregate().Match(playerFilter).ToListAsync();
 
-            return playerQuery.ToList();
+                return playerQuery;
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"An error occurred while searching for players: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
         }
 
     }

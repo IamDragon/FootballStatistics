@@ -34,10 +34,10 @@ namespace FootballStatistics
             playerDataAccess = new PlayerDataAccess();
         }
 
-        private void Search()
+        private async void Search()
         {
             //Search for players
-            var playerSearch = playerDataAccess.SearchPlayers(searctxtBox.Text);
+            var playerSearch = await playerDataAccess.SearchPlayersAsync(searctxtBox.Text);
 
             foreach (var doc in playerSearch)
             {
@@ -83,13 +83,12 @@ namespace FootballStatistics
             Login();
         }
 
-        private void Login()
+        private async void Login()
         {
-            string userID = userDataAccess.AuthenticateUser(usernametxt.Text, passwordtxt.Text);
-            if (userID == "")
+            string userID = await userDataAccess.AuthenticateUserAsync(usernametxt.Text, passwordtxt.Text);
+            if (string.IsNullOrEmpty(userID))
             {
                 MessageBox.Show("Username or Password is incorrect or user does not exist");
-
             }
             else
             {

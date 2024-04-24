@@ -59,11 +59,24 @@ namespace FootballStatistics
                 Console.WriteLine("Data invalid");
                 return;
             }
+            addUserAsync();
 
             Console.WriteLine("Data valid Adding to db");
 
             //Connect to db
-            playerDataAccess.AddUser(new PlayerModel
+           
+
+            fullNametxt.Text = string.Empty;
+            nationalitytxt.Text = string.Empty;
+            goalstxt.Text = string.Empty;
+            shotstakentxt.Text = string.Empty;
+            assiststxt.Text = string.Empty;
+            positiontxt.Text = string.Empty;
+        }
+
+        private async void addUserAsync()
+        {
+            await playerDataAccess.AddPlayerAsync(new PlayerModel
             {
                 FullName = fullNametxt.Text,
                 Nationality = nationalitytxt.Text,
@@ -72,13 +85,6 @@ namespace FootballStatistics
                 Assists = int.Parse(assiststxt.Text),
                 Position = positiontxt.Text
             });
-
-            fullNametxt.Text = string.Empty;
-            nationalitytxt.Text = string.Empty;
-            goalstxt.Text = string.Empty;
-            shotstakentxt.Text = string.Empty;
-            assiststxt.Text = string.Empty;
-            positiontxt.Text = string.Empty;
         }
 
     }
