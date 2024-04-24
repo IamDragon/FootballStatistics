@@ -30,8 +30,8 @@ namespace FootballStatistics
 
             //Check if values are ints
             bool goals = int.TryParse(goalstxt.Text, out int _);
-            bool shotsTaken = int.TryParse(goalstxt.Text, out int _);
-            bool assists = int.TryParse(goalstxt.Text, out int _);
+            bool shotsTaken = int.TryParse(shotstakentxt.Text, out int _);
+            bool assists = int.TryParse(assiststxt.Text, out int _);
 
 
             return goals & shotsTaken & assists;
@@ -59,23 +59,19 @@ namespace FootballStatistics
                 Console.WriteLine("Data invalid");
                 return;
             }
-            addUserAsync();
+            AddUserAsync();
 
             Console.WriteLine("Data valid Adding to db");
 
-            //Connect to db
            
+            ResetTextBoxes();
 
-            fullNametxt.Text = string.Empty;
-            nationalitytxt.Text = string.Empty;
-            goalstxt.Text = string.Empty;
-            shotstakentxt.Text = string.Empty;
-            assiststxt.Text = string.Empty;
-            positiontxt.Text = string.Empty;
+      
         }
 
-        private async void addUserAsync()
+        private async void AddUserAsync()
         {
+
             await playerDataAccess.AddPlayerAsync(new PlayerModel
             {
                 FullName = fullNametxt.Text,
@@ -85,6 +81,16 @@ namespace FootballStatistics
                 Assists = int.Parse(assiststxt.Text),
                 Position = positiontxt.Text
             });
+        }
+
+        private void ResetTextBoxes()
+        {
+            fullNametxt.Text = string.Empty;
+            nationalitytxt.Text = string.Empty;
+            goalstxt.Text = string.Empty;
+            shotstakentxt.Text = string.Empty;
+            assiststxt.Text = string.Empty;
+            positiontxt.Text = string.Empty;
         }
 
     }

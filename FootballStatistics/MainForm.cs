@@ -39,6 +39,11 @@ namespace FootballStatistics
             //Search for players
             var playerSearch = await playerDataAccess.SearchPlayersAsync(searctxtBox.Text);
 
+            if (playerSearch == null)
+            {
+                return;
+            }
+
             foreach (var doc in playerSearch)
             {
                 playersSearchResultsBox.Items.Add($"Name: {doc.FullName} | Nationality: {doc.Nationality} | Position: {doc.Position}");
