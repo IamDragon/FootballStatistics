@@ -14,25 +14,19 @@ namespace FootballStatistics
 {
     public partial class ShowPlayer : Form
     {
-        string playerId;
-        string connectionString = "mongodb://user:pass@localhost:27017/";
-        string databaseName = "fooballstats";
+        string playerID;
+        PlayerDataAccess playerDataAccess;
         public ShowPlayer(string playerID)
         {
-            playerId = playerID;
             InitializeComponent();
+            playerDataAccess = new PlayerDataAccess();
+            this.playerID = playerID;
             LoadValues();
         }
 
         private void LoadValues()
         {
-            var client = new MongoClient(connectionString);
-            var db = client.GetDatabase(databaseName);
-            var collection = db.GetCollection<PlayerModel>("players");
-
-            var result = collection.Find<PlayerModel>(p => p.PlayerID == playerId);
-            var list = result.ToList<PlayerModel>();
-            PlayerModel player = list[0]; //only 1 will exist since PlayerID is unique
+            PlayerModel player = playerDataAccess.GetPlayer(playerID);
             fullnamnelblChange.Text = player.FullName;
             nationalitylblChange.Text = player.Nationality;
             goalslblChange.Text = player.Goals.ToString();

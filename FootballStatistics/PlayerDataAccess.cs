@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,14 @@ namespace FootballStatistics
             var players = ConnectToMongo<PlayerModel>(PlayerCollection);
             var results = players.Find(_ => true);
             return results.ToList();
+        }
+
+        public PlayerModel GetPlayer(string playerID)
+        {
+            var players = ConnectToMongo<PlayerModel>(PlayerCollection);
+            var result = players.Find<PlayerModel>(p => p.PlayerID == playerID);
+            var list = result.ToList<PlayerModel>();
+            return list.FirstOrDefault();
         }
 
         public List<PlayerModel> SearchPlayers(string searchString)

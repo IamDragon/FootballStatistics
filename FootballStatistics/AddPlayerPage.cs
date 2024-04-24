@@ -14,11 +14,11 @@ namespace FootballStatistics
 {
     public partial class AddPlayerPage : Form
     {
-        string connectionString = "mongodb://user:pass@localhost:27017/";
-        string databaseName = "fooballstats";
+        PlayerDataAccess playerDataAccess;
         public AddPlayerPage()
         {
             InitializeComponent();
+            playerDataAccess = new PlayerDataAccess();
         }
 
         private bool IsDataValid()
@@ -63,16 +63,22 @@ namespace FootballStatistics
             Console.WriteLine("Data valid Adding to db");
 
             //Connect to db
-            var client = new MongoClient(connectionString);
-            var db = client.GetDatabase(databaseName);
-            var collection = db.GetCollection<PlayerModel>("players");
+            playerDataAccess.AddUser(new PlayerModel
+            {
+                FullName = fullNametxt.Text,
+                Nationality = nationalitytxt.Text,
+                Goals = int.Parse(goalstxt.Text),
+                ShotsTaken = int.Parse(shotstakentxt.Text),
+                Assists = int.Parse(assiststxt.Text),
+                Position = positiontxt.Text
+            });
 
-            //Create and insert player
-            var player = new PlayerModel { FullName = fullNametxt.Text, Nationality = nationalitytxt.Text, Goals = int.Parse(goalstxt.Text),
-                ShotsTaken =  int.Parse(shotstakentxt.Text), Assists = int.Parse(assiststxt.Text), Position = positiontxt.Text};
-            collection.InsertOne(player);
-
-            fullNametxt.Text = "";
+            fullNametxt.Text = string.Empty;
+            nationalitytxt.Text = string.Empty;
+            goalstxt.Text = string.Empty;
+            shotstakentxt.Text = string.Empty;
+            assiststxt.Text = string.Empty;
+            positiontxt.Text = string.Empty;
         }
 
     }
