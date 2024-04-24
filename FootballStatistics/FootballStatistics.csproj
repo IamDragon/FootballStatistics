@@ -165,6 +165,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlayerDataAccess.cs" />
     <Compile Include="ShowPlayer.cs">
       <SubType>Form</SubType>
     </Compile>

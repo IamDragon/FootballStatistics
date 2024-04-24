@@ -195,6 +195,7 @@
             this.logoutbtn.TabIndex = 17;
             this.logoutbtn.Text = "Log out";
             this.logoutbtn.UseVisualStyleBackColor = true;
+            this.logoutbtn.Visible = false;
             this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
             // 
             // MainForm
