@@ -48,14 +48,14 @@ namespace FootballStatistics
             }
 
             //search for teams
-            var teamFilter = Builders<TeamModel>.Filter.Text(searchRequest.Query);
-            var teamQuery = teams.Aggregate().Match(teamFilter);
+            //var teamFilter = Builders<TeamModel>.Filter.Text(searchRequest.Query);
+            //var teamQuery = teams.Aggregate().Match(teamFilter);
 
-            foreach (var doc in teamQuery.ToList())
-            {
-                playersSearchResultsBox.Items.Add($"TeamName: {doc.TeamName} | Country: {doc.Country}");
-                teamSearchResults.Add(doc);
-            }
+            //foreach (var doc in teamQuery.ToList())
+            //{
+            //    playersSearchResultsBox.Items.Add($"TeamName: {doc.TeamName} | Country: {doc.Country}");
+            //    teamSearchResults.Add(doc);
+            //}
 
             //search for matches
             //var matchFilter = Builders<Match>.Filter.Text(searchRequest.Query);
@@ -91,6 +91,18 @@ namespace FootballStatistics
                 //ShowTeam showTeamForm = new ShowPlayer(teamSearchResults[index].TeamID);
                 //showTeamForm.Show();
             }
+        }
+
+        private void signupBtn_Click(object sender, EventArgs e)
+        {
+            SignUpForm signupForm = new SignUpForm();
+            signupForm.Show();
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            LogInForm loginForm = new LogInForm();
+            loginForm.Show();
         }
     }
 }

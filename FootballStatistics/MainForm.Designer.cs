@@ -31,8 +31,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.searchBtn = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.loginBtn = new System.Windows.Forms.Button();
+            this.signupBtn = new System.Windows.Forms.Button();
             this.playersSearchResultsBox = new System.Windows.Forms.ListBox();
             this.searctxtBox = new System.Windows.Forms.TextBox();
             this.playerslbl = new System.Windows.Forms.Label();
@@ -70,23 +70,25 @@
             this.button3.Text = "Search";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // loginBtn
             // 
-            this.button4.Location = new System.Drawing.Point(12, 12);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Log in";
-            this.button4.UseVisualStyleBackColor = true;
+            this.loginBtn.Location = new System.Drawing.Point(12, 12);
+            this.loginBtn.Name = "loginBtn";
+            this.loginBtn.Size = new System.Drawing.Size(75, 23);
+            this.loginBtn.TabIndex = 3;
+            this.loginBtn.Text = "Log in";
+            this.loginBtn.UseVisualStyleBackColor = true;
+            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
-            // button5
+            // signupBtn
             // 
-            this.button5.Location = new System.Drawing.Point(12, 52);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Sign up";
-            this.button5.UseVisualStyleBackColor = true;
+            this.signupBtn.Location = new System.Drawing.Point(12, 52);
+            this.signupBtn.Name = "signupBtn";
+            this.signupBtn.Size = new System.Drawing.Size(75, 23);
+            this.signupBtn.TabIndex = 4;
+            this.signupBtn.Text = "Sign up";
+            this.signupBtn.UseVisualStyleBackColor = true;
+            this.signupBtn.Click += new System.EventHandler(this.signupBtn_Click);
             // 
             // playersSearchResultsBox
             // 
@@ -160,8 +162,8 @@
             this.Controls.Add(this.playerslbl);
             this.Controls.Add(this.searctxtBox);
             this.Controls.Add(this.playersSearchResultsBox);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.signupBtn);
+            this.Controls.Add(this.loginBtn);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.button1);
@@ -177,8 +179,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button loginBtn;
+        private System.Windows.Forms.Button signupBtn;
         private System.Windows.Forms.ListBox playersSearchResultsBox;
         private System.Windows.Forms.TextBox searctxtBox;
         private System.Windows.Forms.Label playerslbl;
