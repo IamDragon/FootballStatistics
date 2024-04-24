@@ -20,10 +20,12 @@ namespace FootballStatistics
         string databaseName = "fooballstats";
         List<PlayerModel> playerSearchResults = new List<PlayerModel>();
         List<TeamModel> teamSearchResults = new List<TeamModel>();
-
+        UserDataAccess userDataAccess;
+        private  string userID; //logged in userID - Login Form changes this and will have a reference
         public MainForm()
         {
             InitializeComponent();
+            userDataAccess = new UserDataAccess();
         }
 
         private void Search()
@@ -33,7 +35,7 @@ namespace FootballStatistics
             var players = db.GetCollection<PlayerModel>("players");
             var teams = db.GetCollection<TeamModel>("teams");
             //var matches = db.GetCollection<PlayerModel>("matches");
-
+            Console.WriteLine(userID);
 
             var searchRequest = new { Query = searctxtBox.Text };
 
@@ -99,10 +101,25 @@ namespace FootballStatistics
             signupForm.Show();
         }
 
-        private void loginBtn_Click(object sender, EventArgs e)
+        private void loginBtn_Click_1(object sender, EventArgs e)
         {
-            LogInForm loginForm = new LogInForm();
-            loginForm.Show();
+            string userID = userDataAccess.AuthenticateUser(usernametxt.Text, passwordtxt.Text);
+            if (userID == "")
+            {
+                MessageBox.Show("Username or Password is incorrect or user does not exist");
+
+            }
+            else
+            {
+                MessageBox.Show("Log in successful");
+                this.userID = userID;
+                usernametxt.Hide();
+                usernamelbl.Hide();
+                passwordtxt.Hide();
+                passwprdlbl.Hide();
+                loginBtn.Hide();
+                signupBtn.Hide();
+            }
         }
     }
 }

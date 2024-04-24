@@ -31,7 +31,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.searchBtn = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.loginBtn = new System.Windows.Forms.Button();
             this.signupBtn = new System.Windows.Forms.Button();
             this.playersSearchResultsBox = new System.Windows.Forms.ListBox();
             this.searctxtBox = new System.Windows.Forms.TextBox();
@@ -40,6 +39,11 @@
             this.teamSearchResultsBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.loginBtn = new System.Windows.Forms.Button();
+            this.passwprdlbl = new System.Windows.Forms.Label();
+            this.usernamelbl = new System.Windows.Forms.Label();
+            this.passwordtxt = new System.Windows.Forms.TextBox();
+            this.usernametxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -70,19 +74,9 @@
             this.button3.Text = "Search";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // loginBtn
-            // 
-            this.loginBtn.Location = new System.Drawing.Point(12, 12);
-            this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(75, 23);
-            this.loginBtn.TabIndex = 3;
-            this.loginBtn.Text = "Log in";
-            this.loginBtn.UseVisualStyleBackColor = true;
-            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
-            // 
             // signupBtn
             // 
-            this.signupBtn.Location = new System.Drawing.Point(12, 52);
+            this.signupBtn.Location = new System.Drawing.Point(50, 106);
             this.signupBtn.Name = "signupBtn";
             this.signupBtn.Size = new System.Drawing.Size(75, 23);
             this.signupBtn.TabIndex = 4;
@@ -150,11 +144,58 @@
             this.listBox2.Size = new System.Drawing.Size(306, 108);
             this.listBox2.TabIndex = 10;
             // 
+            // loginBtn
+            // 
+            this.loginBtn.Location = new System.Drawing.Point(50, 77);
+            this.loginBtn.Name = "loginBtn";
+            this.loginBtn.Size = new System.Drawing.Size(75, 23);
+            this.loginBtn.TabIndex = 16;
+            this.loginBtn.Text = "Log in";
+            this.loginBtn.UseVisualStyleBackColor = true;
+            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click_1);
+            // 
+            // passwprdlbl
+            // 
+            this.passwprdlbl.AutoSize = true;
+            this.passwprdlbl.Location = new System.Drawing.Point(15, 44);
+            this.passwprdlbl.Name = "passwprdlbl";
+            this.passwprdlbl.Size = new System.Drawing.Size(53, 13);
+            this.passwprdlbl.TabIndex = 15;
+            this.passwprdlbl.Text = "Password";
+            // 
+            // usernamelbl
+            // 
+            this.usernamelbl.AutoSize = true;
+            this.usernamelbl.Location = new System.Drawing.Point(13, 18);
+            this.usernamelbl.Name = "usernamelbl";
+            this.usernamelbl.Size = new System.Drawing.Size(55, 13);
+            this.usernamelbl.TabIndex = 14;
+            this.usernamelbl.Text = "Username";
+            // 
+            // passwordtxt
+            // 
+            this.passwordtxt.Location = new System.Drawing.Point(74, 41);
+            this.passwordtxt.Name = "passwordtxt";
+            this.passwordtxt.Size = new System.Drawing.Size(100, 20);
+            this.passwordtxt.TabIndex = 13;
+            // 
+            // usernametxt
+            // 
+            this.usernametxt.Location = new System.Drawing.Point(74, 15);
+            this.usernametxt.Name = "usernametxt";
+            this.usernametxt.Size = new System.Drawing.Size(100, 20);
+            this.usernametxt.TabIndex = 12;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.loginBtn);
+            this.Controls.Add(this.passwprdlbl);
+            this.Controls.Add(this.usernamelbl);
+            this.Controls.Add(this.passwordtxt);
+            this.Controls.Add(this.usernametxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.label1);
@@ -163,7 +204,6 @@
             this.Controls.Add(this.searctxtBox);
             this.Controls.Add(this.playersSearchResultsBox);
             this.Controls.Add(this.signupBtn);
-            this.Controls.Add(this.loginBtn);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.button1);
@@ -179,7 +219,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button loginBtn;
         private System.Windows.Forms.Button signupBtn;
         private System.Windows.Forms.ListBox playersSearchResultsBox;
         private System.Windows.Forms.TextBox searctxtBox;
@@ -188,5 +227,10 @@
         private System.Windows.Forms.ListBox teamSearchResultsBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button loginBtn;
+        private System.Windows.Forms.Label passwprdlbl;
+        private System.Windows.Forms.Label usernamelbl;
+        private System.Windows.Forms.TextBox passwordtxt;
+        private System.Windows.Forms.TextBox usernametxt;
     }
 }

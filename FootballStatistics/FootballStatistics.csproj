@@ -159,12 +159,6 @@
     <Compile Include="AddPlayerPage.Designer.cs">
       <DependentUpon>AddPlayerPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogInForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LogInForm.Designer.cs">
-      <DependentUpon>LogInForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,9 +185,6 @@
     <Compile Include="UserModel.cs" />
     <EmbeddedResource Include="AddPlayerPage.resx">
       <DependentUpon>AddPlayerPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LogInForm.resx">
-      <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
