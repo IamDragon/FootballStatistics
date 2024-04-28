@@ -8,6 +8,7 @@ namespace FootballStatistics
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string PlayerID{ get; set; }
+        public string TeamID { get; set; }
         public string FullName{ get; set; }
         public string Nationality { get; set; }
         public int Goals { get; set; }

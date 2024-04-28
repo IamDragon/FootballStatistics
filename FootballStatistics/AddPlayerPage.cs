@@ -75,6 +75,7 @@ namespace FootballStatistics
             await playerDataAccess.AddPlayerAsync(new PlayerModel
             {
                 FullName = fullNametxt.Text,
+                TeamID = teamIDtxt.Text,
                 Nationality = nationalitytxt.Text,
                 Goals = int.Parse(goalstxt.Text),
                 ShotsTaken = int.Parse(shotstakentxt.Text),
