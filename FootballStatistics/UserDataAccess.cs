@@ -63,10 +63,9 @@ namespace FootballStatistics
         {
             var users = ConnectToMongo<UserModel>(UserCollection);
             var existingUser = await users.Find(u => u.Username == username).ToListAsync();
-            //if (existingUser.Count > 0)
-            //    return true;
-            //return false;
-            return existingUser != null;
+            if (existingUser.Count > 0)
+                return true;
+            return false;
         }
 
         //bad user authentication but thats not the main purpose of this project
