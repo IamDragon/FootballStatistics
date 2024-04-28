@@ -36,6 +36,21 @@ namespace FootballStatistics
 
         }
 
+        public async Task<ReplaceOneResult> UpdatePlayerById(PlayerModel updatedPlayer)
+        {
+            try
+            {
+                var players = ConnectToMongo<PlayerModel>(PlayerCollection);
+                var resutls = await players.ReplaceOneAsync(p => p.PlayerID == updatedPlayer.PlayerID, updatedPlayer, new ReplaceOptions { IsUpsert = false });
+                return resutls;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while updating player: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         private async Task<List<PlayerModel>> GetAllPlayersAsync()
         {
             try

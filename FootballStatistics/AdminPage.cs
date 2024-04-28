@@ -43,7 +43,8 @@ namespace FootballStatistics
 
         private void playerIDUpdateBtn_Click(object sender, EventArgs e)
         {
-
+            UpdatePlayerPage updatePlayerPage = new UpdatePlayerPage(playerIDUpdateTxt.Text);
+            updatePlayerPage.Show();
         }
 
         private void teamIDUpdateBtn_Click(object sender, EventArgs e)

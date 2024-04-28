@@ -196,6 +196,12 @@
     </Compile>
     <Compile Include="TeamDataAccess.cs" />
     <Compile Include="TeamModel.cs" />
+    <Compile Include="UpdatePlayerPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePlayerPage.Designer.cs">
+      <DependentUpon>UpdatePlayerPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserDataAccess.cs" />
     <Compile Include="UserModel.cs" />
     <EmbeddedResource Include="AddPlayerPage.resx">
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePlayerPage.resx">
+      <DependentUpon>UpdatePlayerPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="libmongocrypt.dylib" />
     <None Include="libmongocrypt.so" />
