@@ -66,7 +66,7 @@ namespace FootballStatistics
             }
         }
 
-        public async Task<PlayerModel> GetPlayerAsync(string playerID)
+        public async Task<PlayerModel> GetPlayerByIDAsync(string playerID)
         {
             try
             {
@@ -85,8 +85,6 @@ namespace FootballStatistics
                 return null;
 
             }
-
-
         }
 
         public async Task<List<PlayerModel>> SearchPlayersAsync(string searchString)

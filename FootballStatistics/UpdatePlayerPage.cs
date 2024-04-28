@@ -28,7 +28,7 @@ namespace FootballStatistics
 
         private async void UpdatePlayerAsync()
         {
-            PlayerModel existingPlayer = await playerDataAccess.GetPlayerAsync(playerID); 
+            PlayerModel existingPlayer = await playerDataAccess.GetPlayerByIDAsync(playerID); 
             if(existingPlayer == null)
             {
                 MessageBox.Show("PlayerId invalid");

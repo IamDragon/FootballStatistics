@@ -18,7 +18,7 @@ namespace FootballStatistics
     {
         string connectionString = "mongodb://user:pass@localhost:27017/";
         string databaseName = "fooballstats";
-        
+
         //searchResults
         List<PlayerModel> playerSearchResults = new List<PlayerModel>();
         List<TeamModel> teamSearchResults = new List<TeamModel>();
@@ -80,7 +80,7 @@ namespace FootballStatistics
             int index = this.playersSearchResultsBox.IndexFromPoint(e.Location);
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-                ShowPlayer showplayerForm = new ShowPlayer(playerSearchResults[index].PlayerID);
+                ShowPlayer showplayerForm = new ShowPlayer(playerSearchResults[index].PlayerID, userID);
                 showplayerForm.Show();
             }
         }
@@ -126,6 +126,9 @@ namespace FootballStatistics
                 loginBtn.Hide();
                 signupBtn.Hide();
                 logoutbtn.Show();
+                adminLogInBtn.Hide();
+                favoritePnl.Show();
+                LoadUserFavorites();
             }
         }
 
@@ -144,12 +147,41 @@ namespace FootballStatistics
             loginBtn.Show();
             signupBtn.Show();
             logoutbtn.Hide();
+            adminLogInBtn.Show();
+            favoritePnl.Hide();
+        }
+
+        private async void LoadUserFavorites()
+        {
+            UserModel user = await userDataAccess.GetUserByIDAsync(userID);
+            PlayerModel player = await playerDataAccess.GetPlayerByIDAsync(user.FavoritePlayer);
+            if(player != null)
+                favoritePlayerBtn.Text = player.FullName;
+
+            TeamModel team = await teamDataAccess.GetTeamByIdAsync(user.FavoritePlayer);
+            if(team != null)
+                favoriteTeamBtn.Text = team.TeamName;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             AdminPage adminPage = new AdminPage();
             adminPage.Show();
+        }
+
+        private async void favoritePlayerBtn_Click(object sender, EventArgs e)
+        {
+            UserModel user = await userDataAccess.GetUserByIDAsync(userID);
+            if (user.FavoritePlayer != null)
+            {
+                ShowPlayer showPlayer = new ShowPlayer(user.FavoritePlayer);
+                showPlayer.Show();
+            }
+        }
+
+        private void favoriteTeamBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

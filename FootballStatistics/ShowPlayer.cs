@@ -14,19 +14,26 @@ namespace FootballStatistics
 {
     public partial class ShowPlayer : Form
     {
-        string playerID;
-        PlayerDataAccess playerDataAccess;
-        public ShowPlayer(string playerID)
+        private string playerID;
+        private string userID;
+        private PlayerDataAccess playerDataAccess;
+        private UserDataAccess userDataAccess;
+        public ShowPlayer(string playerID, string userID = "")
         {
             InitializeComponent();
             playerDataAccess = new PlayerDataAccess();
+            userDataAccess = new UserDataAccess();
             this.playerID = playerID;
+            this.userID = userID;
             LoadValuesAsync();
+            if(userID != "")
+                favoriteBtn.Visible = true;
+
         }
 
         private async void LoadValuesAsync()
         {
-            PlayerModel player = await playerDataAccess.GetPlayerAsync(playerID);
+            PlayerModel player = await playerDataAccess.GetPlayerByIDAsync(playerID);
             fullnamnelblChange.Text = player.FullName;
             nationalitylblChange.Text = player.Nationality;
             goalslblChange.Text = player.Goals.ToString();
@@ -38,6 +45,22 @@ namespace FootballStatistics
         private void ShowPlayer_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private async void favoriteBtn_Click(object sender, EventArgs e)
+        {
+            UserModel currentUser = await userDataAccess.GetUserByIDAsync(userID);
+            if (currentUser == null)
+                return;
+            currentUser.FavoritePlayer = playerID;
+            var results = await userDataAccess.UpdateUserById(currentUser);
+
+            if (results.MatchedCount == 0)
+                MessageBox.Show("No Matches found");
+            else
+            {
+                MessageBox.Show("Succesfully updated favorite");
+            }
         }
     }
 }

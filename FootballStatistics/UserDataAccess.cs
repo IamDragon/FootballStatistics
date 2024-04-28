@@ -41,6 +41,42 @@ namespace FootballStatistics
             }
         }
 
+        public async Task<ReplaceOneResult> UpdateUserById(UserModel existingUser)
+        {
+            try
+            {
+                var players = ConnectToMongo<UserModel>(UserCollection);
+                var resutls = await players.ReplaceOneAsync(u => u.UserID == existingUser.UserID, existingUser, new ReplaceOptions { IsUpsert = false });
+                return resutls;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while updating user: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public async Task<UserModel> GetUserByIDAsync(string userID)
+        {
+            try
+            {
+                var players = ConnectToMongo<UserModel>(UserCollection);
+                var result = await players.FindAsync<UserModel>(u => u.UserID == userID);
+                var list = result.ToList<UserModel>();
+                if (list.Count > 0)
+                    return list.FirstOrDefault();
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"An error occurred while retrieving user by ID: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+
+            }
+        }
+
         private async Task<List<UserModel>> GetAllUsersAsync()
         {
             try

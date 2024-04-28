@@ -43,7 +43,7 @@ namespace FootballStatistics
 
         private async void playerIDUpdateBtn_Click(object sender, EventArgs e)
         {
-            PlayerModel player = await playerDataAccess.GetPlayerAsync(playerIDUpdateTxt.Text);
+            PlayerModel player = await playerDataAccess.GetPlayerByIDAsync(playerIDUpdateTxt.Text);
             if(player != null)
             {
                 UpdatePlayerPage updatePlayerPage = new UpdatePlayerPage(player.PlayerID);

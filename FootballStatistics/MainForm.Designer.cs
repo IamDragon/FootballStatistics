@@ -45,7 +45,14 @@
             this.passwordtxt = new System.Windows.Forms.TextBox();
             this.usernametxt = new System.Windows.Forms.TextBox();
             this.logoutbtn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.adminLogInBtn = new System.Windows.Forms.Button();
+            this.favoritePnl = new System.Windows.Forms.Panel();
+            this.favoritelbl = new System.Windows.Forms.Label();
+            this.favoritePlayerlbl = new System.Windows.Forms.Label();
+            this.favoriteTeamlbl = new System.Windows.Forms.Label();
+            this.favoritePlayerBtn = new System.Windows.Forms.Button();
+            this.favoriteTeamBtn = new System.Windows.Forms.Button();
+            this.favoritePnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -199,22 +206,83 @@
             this.logoutbtn.Visible = false;
             this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
             // 
-            // button2
+            // adminLogInBtn
             // 
-            this.button2.Location = new System.Drawing.Point(12, 402);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 36);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Secret Admin Log In";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.adminLogInBtn.Location = new System.Drawing.Point(12, 402);
+            this.adminLogInBtn.Name = "adminLogInBtn";
+            this.adminLogInBtn.Size = new System.Drawing.Size(97, 36);
+            this.adminLogInBtn.TabIndex = 18;
+            this.adminLogInBtn.Text = "Secret Admin Log In";
+            this.adminLogInBtn.UseVisualStyleBackColor = true;
+            this.adminLogInBtn.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // favoritePnl
+            // 
+            this.favoritePnl.Controls.Add(this.favoriteTeamBtn);
+            this.favoritePnl.Controls.Add(this.favoritePlayerBtn);
+            this.favoritePnl.Controls.Add(this.favoriteTeamlbl);
+            this.favoritePnl.Controls.Add(this.favoritePlayerlbl);
+            this.favoritePnl.Controls.Add(this.favoritelbl);
+            this.favoritePnl.Location = new System.Drawing.Point(12, 174);
+            this.favoritePnl.Name = "favoritePnl";
+            this.favoritePnl.Size = new System.Drawing.Size(200, 100);
+            this.favoritePnl.TabIndex = 19;
+            this.favoritePnl.Visible = false;
+            // 
+            // favoritelbl
+            // 
+            this.favoritelbl.AutoSize = true;
+            this.favoritelbl.Location = new System.Drawing.Point(6, 4);
+            this.favoritelbl.Name = "favoritelbl";
+            this.favoritelbl.Size = new System.Drawing.Size(50, 13);
+            this.favoritelbl.TabIndex = 0;
+            this.favoritelbl.Text = "Favorites";
+            // 
+            // favoritePlayerlbl
+            // 
+            this.favoritePlayerlbl.AutoSize = true;
+            this.favoritePlayerlbl.Location = new System.Drawing.Point(9, 40);
+            this.favoritePlayerlbl.Name = "favoritePlayerlbl";
+            this.favoritePlayerlbl.Size = new System.Drawing.Size(36, 13);
+            this.favoritePlayerlbl.TabIndex = 1;
+            this.favoritePlayerlbl.Text = "Player";
+            // 
+            // favoriteTeamlbl
+            // 
+            this.favoriteTeamlbl.AutoSize = true;
+            this.favoriteTeamlbl.Location = new System.Drawing.Point(9, 69);
+            this.favoriteTeamlbl.Name = "favoriteTeamlbl";
+            this.favoriteTeamlbl.Size = new System.Drawing.Size(34, 13);
+            this.favoriteTeamlbl.TabIndex = 2;
+            this.favoriteTeamlbl.Text = "Team";
+            // 
+            // favoritePlayerBtn
+            // 
+            this.favoritePlayerBtn.Location = new System.Drawing.Point(49, 35);
+            this.favoritePlayerBtn.Name = "favoritePlayerBtn";
+            this.favoritePlayerBtn.Size = new System.Drawing.Size(148, 23);
+            this.favoritePlayerBtn.TabIndex = 3;
+            this.favoritePlayerBtn.Text = "None";
+            this.favoritePlayerBtn.UseVisualStyleBackColor = true;
+            this.favoritePlayerBtn.Click += new System.EventHandler(this.favoritePlayerBtn_Click);
+            // 
+            // favoriteTeamBtn
+            // 
+            this.favoriteTeamBtn.Location = new System.Drawing.Point(49, 64);
+            this.favoriteTeamBtn.Name = "favoriteTeamBtn";
+            this.favoriteTeamBtn.Size = new System.Drawing.Size(148, 23);
+            this.favoriteTeamBtn.TabIndex = 4;
+            this.favoriteTeamBtn.Text = "None";
+            this.favoriteTeamBtn.UseVisualStyleBackColor = true;
+            this.favoriteTeamBtn.Click += new System.EventHandler(this.favoriteTeamBtn_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.favoritePnl);
+            this.Controls.Add(this.adminLogInBtn);
             this.Controls.Add(this.logoutbtn);
             this.Controls.Add(this.loginBtn);
             this.Controls.Add(this.passwprdlbl);
@@ -234,6 +302,8 @@
             this.Controls.Add(this.button1);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.favoritePnl.ResumeLayout(false);
+            this.favoritePnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,6 +328,12 @@
         private System.Windows.Forms.TextBox passwordtxt;
         private System.Windows.Forms.TextBox usernametxt;
         private System.Windows.Forms.Button logoutbtn;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button adminLogInBtn;
+        private System.Windows.Forms.Panel favoritePnl;
+        private System.Windows.Forms.Button favoriteTeamBtn;
+        private System.Windows.Forms.Button favoritePlayerBtn;
+        private System.Windows.Forms.Label favoriteTeamlbl;
+        private System.Windows.Forms.Label favoritePlayerlbl;
+        private System.Windows.Forms.Label favoritelbl;
     }
 }
