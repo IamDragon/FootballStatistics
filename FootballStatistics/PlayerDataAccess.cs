@@ -73,7 +73,10 @@ namespace FootballStatistics
                 var players = ConnectToMongo<PlayerModel>(PlayerCollection);
                 var result = await players.FindAsync<PlayerModel>(p => p.PlayerID == playerID);
                 var list = result.ToList<PlayerModel>();
-                return list.FirstOrDefault();
+                if (list.Count > 0)
+                    return list.FirstOrDefault();
+                else
+                    return null;
             }
             catch (Exception ex)
             {

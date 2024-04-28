@@ -48,7 +48,10 @@ namespace FootballStatistics
             if (results.MatchedCount == 0)
                 MessageBox.Show("No Matches found");
             else
+            {
                 MessageBox.Show("Succesfully inserted value");
+                ResetTextBoxes();
+            }
 
         }
 

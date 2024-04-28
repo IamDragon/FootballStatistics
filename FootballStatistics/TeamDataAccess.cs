@@ -57,7 +57,10 @@ namespace FootballStatistics
                 var teams = ConnectToMongo<TeamModel>(TeamCollection);
                 var result = await teams.FindAsync<TeamModel>(p => p.TeamID == teamID);
                 var list = result.ToList<TeamModel>();
-                return list.FirstOrDefault();
+                if (list.Count > 0)
+                    return list.FirstOrDefault();
+                else
+                    return null;
             }
             catch (Exception ex)
             {
@@ -104,6 +107,21 @@ namespace FootballStatistics
             {
                 MessageBox.Show($"An error occurred while searching for players: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        public async Task<ReplaceOneResult> UpdateTeamById(TeamModel existingTeam)
+        {
+            try
+            {
+                var teams = ConnectToMongo<TeamModel>(TeamCollection);
+                var resutls = await teams.ReplaceOneAsync(t => t.TeamID == existingTeam.TeamID, existingTeam, new ReplaceOptions { IsUpsert = false });
+                return resutls;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while updating player: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
     }

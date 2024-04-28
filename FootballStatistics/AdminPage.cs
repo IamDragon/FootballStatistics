@@ -41,15 +41,26 @@ namespace FootballStatistics
             Console.WriteLine("Open Add Match Page");
         }
 
-        private void playerIDUpdateBtn_Click(object sender, EventArgs e)
+        private async void playerIDUpdateBtn_Click(object sender, EventArgs e)
         {
-            UpdatePlayerPage updatePlayerPage = new UpdatePlayerPage(playerIDUpdateTxt.Text);
-            updatePlayerPage.Show();
+            PlayerModel player = await playerDataAccess.GetPlayerAsync(playerIDUpdateTxt.Text);
+            if(player != null)
+            {
+                UpdatePlayerPage updatePlayerPage = new UpdatePlayerPage(player.PlayerID);
+                updatePlayerPage.Show();
+            }
+            
         }
 
-        private void teamIDUpdateBtn_Click(object sender, EventArgs e)
+        private async void teamIDUpdateBtn_Click(object sender, EventArgs e)
         {
-
+            TeamModel team = await teamDataAccess.GetTeamByIdAsync(teamIDUpdateTxt.Text);
+            if(team != null)
+            {
+                UpdateTeamPage updateTeamPage = new UpdateTeamPage(teamIDUpdateTxt.Text);
+                updateTeamPage.Show();
+            }
+            
         }
 
         private void matchIDUpdateBtn_Click(object sender, EventArgs e)
