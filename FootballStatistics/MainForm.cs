@@ -26,30 +26,48 @@ namespace FootballStatistics
         //DataAccess
         UserDataAccess userDataAccess;
         PlayerDataAccess playerDataAccess;
+        TeamDataAccess teamDataAccess;
         private string userID; //logged in userID - Login Form changes this and will have a reference
         public MainForm()
         {
             InitializeComponent();
             userDataAccess = new UserDataAccess();
             playerDataAccess = new PlayerDataAccess();
+            teamDataAccess = new TeamDataAccess();
         }
 
         private async void Search()
         {
+            playerSearchResults.Clear();
+            playersSearchResultsBox.Items.Clear();
+            teamSearchResults.Clear();
+            teamSearchResultsBox.Items.Clear();
+
             //Search for players
             var playerSearch = await playerDataAccess.SearchPlayersAsync(searctxtBox.Text);
 
-            if (playerSearch == null)
+            if (playerSearch != null)
             {
-                return;
+                foreach (var player in playerSearch)
+                {
+                    playersSearchResultsBox.Items.Add($"Name: {player.FullName} | Nationality: {player.Nationality} | Position: {player.Position}");
+                    playerSearchResults.Add(player);
+                }
             }
 
-            foreach (var doc in playerSearch)
-            {
-                playersSearchResultsBox.Items.Add($"Name: {doc.FullName} | Nationality: {doc.Nationality} | Position: {doc.Position}");
-                playerSearchResults.Add(doc);
-            }
 
+
+            //Search for teams
+            var teamSearch = await teamDataAccess.SearchTeamsAsync(searctxtBox.Text);
+
+            if (teamSearch != null)
+            {
+                foreach (var team in teamSearch)
+                {
+                    teamSearchResultsBox.Items.Add($"TeamName: {team.TeamName} | country: {team.Country}");
+                    teamSearchResults.Add(team);
+                }
+            }
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
