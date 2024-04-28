@@ -39,8 +39,6 @@ namespace FootballStatistics
 
                 return false;
             }
-
-           
         }
 
         private async Task<List<UserModel>> GetAllUsersAsync()

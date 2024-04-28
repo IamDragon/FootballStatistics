@@ -127,5 +127,11 @@ namespace FootballStatistics
             signupBtn.Show();
             logoutbtn.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AdminPage adminPage = new AdminPage();
+            adminPage.Show();
+        }
     }
 }

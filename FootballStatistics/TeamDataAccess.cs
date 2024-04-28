@@ -88,6 +88,24 @@ namespace FootballStatistics
 
         }
 
+        public async Task<bool> RemoveTeamByIdAsync(string teamId)
+        {
+            try
+            {
+                var teams = ConnectToMongo<PlayerModel>(TeamCollection);
+                var result = await teams.DeleteOneAsync(t => t.TeamID == teamId);
+                if (result.DeletedCount >= 1)
+                    return true;
+                else
+                    return false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while searching for players: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 
 }

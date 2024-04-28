@@ -158,12 +158,19 @@
     <Compile Include="AddTeamPage.Designer.cs">
       <DependentUpon>AddTeamPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminDataAccess.cs" />
     <Compile Include="AdminModel.cs" />
     <Compile Include="AddPlayerPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddPlayerPage.Designer.cs">
       <DependentUpon>AddPlayerPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPage.Designer.cs">
+      <DependentUpon>AdminPage.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -196,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddTeamPage.resx">
       <DependentUpon>AddTeamPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminPage.resx">
+      <DependentUpon>AdminPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
