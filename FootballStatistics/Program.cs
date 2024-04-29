@@ -46,5 +46,6 @@ internal static class Program
         //Application.Run(new AddPlayerPage());
         //Application.Run(new ShowPlayer("6627c76f8a2e481468fcf5e6"));
         Application.Run(new MainForm());
+        //Application.Run(new PlayerComparison(new List<string> { "662fb2b58b52cf1a95d76489", "662e27013216bb3fac1e8804" }));
     }
 }
