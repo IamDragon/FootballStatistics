@@ -23,8 +23,9 @@ namespace FootballStatistics
         List<PlayerModel> playerSearchResults = new List<PlayerModel>();
         List<TeamModel> teamSearchResults = new List<TeamModel>();
 
-        //Player comparison
+        //Comparison
         List<PlayerModel> playersToCompare = new List<PlayerModel>();
+        List<TeamModel> teamsToCompare = new List<TeamModel>();
 
 
         //DataAccess
@@ -214,6 +215,35 @@ namespace FootballStatistics
             {
                 playersToCompare.RemoveAt(index);
                 comparePlayersBox.Items.RemoveAt(index);
+            }
+        }
+
+        private void CompareTeamBtn_Click(object sender, EventArgs e)
+        {
+            if (CompareTeamBox.Items.Count >= 2)
+            {
+                TeamComparison teamComparison = new TeamComparison(teamsToCompare);
+                teamComparison.Show();
+            }
+        }
+
+        private void addSelComTeam_Click(object sender, EventArgs e)
+        {
+            int index = teamSearchResultsBox.SelectedIndex;
+            if (index != System.Windows.Forms.ListBox.NoMatches && !teamsToCompare.Contains(teamSearchResults[index]))
+            {
+                teamsToCompare.Add(teamSearchResults[index]);
+                CompareTeamBox.Items.Add(teamSearchResultsBox.Items[index]);
+            }
+        }
+
+        private void remSelComTeam_Click(object sender, EventArgs e)
+        {
+            int index = CompareTeamBox.SelectedIndex;
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+                teamsToCompare.RemoveAt(index);
+                CompareTeamBox.Items.RemoveAt(index);
             }
         }
     }
