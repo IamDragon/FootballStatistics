@@ -10,7 +10,7 @@ namespace FootballStatistics
 {
     internal class TeamDataAccess
     {
-        private const string ConnectionString = "mongodb://user:pass@localhost:27017/";
+        private string ConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
         private const string DatabaseName = "fooballstats";
         private const string TeamCollection = "teams";
 

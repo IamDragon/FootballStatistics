@@ -1,7 +1,9 @@
 ﻿using MongoDB.Driver;
+using MongoDB.Driver.Core.Connections;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +13,7 @@ namespace FootballStatistics
 {
     internal class PlayerDataAccess
     {
-        private const string ConnectionString = "mongodb://user:pass@localhost:27017/";
+        private string ConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
         private const string DatabaseName = "fooballstats";
         private const string PlayerCollection = "players";
 

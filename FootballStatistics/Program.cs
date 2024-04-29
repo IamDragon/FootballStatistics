@@ -16,7 +16,7 @@ internal static class Program
     static void Main()
     {
         //Connect to db
-        string connectionString = "mongodb://user:pass@localhost:27017/";
+        string connectionString = "mongodb+srv://Marco:vQHHnVDoa3%402we@cluster0.xlbfkzj.mongodb.net/";
         string databaseName = "fooballstats";
         string PlayersCollection = "players";
         string TeamsCollection = "teams";

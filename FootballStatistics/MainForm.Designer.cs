@@ -47,11 +47,12 @@
             this.logoutbtn = new System.Windows.Forms.Button();
             this.adminLogInBtn = new System.Windows.Forms.Button();
             this.favoritePnl = new System.Windows.Forms.Panel();
-            this.favoritelbl = new System.Windows.Forms.Label();
-            this.favoritePlayerlbl = new System.Windows.Forms.Label();
-            this.favoriteTeamlbl = new System.Windows.Forms.Label();
-            this.favoritePlayerBtn = new System.Windows.Forms.Button();
             this.favoriteTeamBtn = new System.Windows.Forms.Button();
+            this.favoritePlayerBtn = new System.Windows.Forms.Button();
+            this.favoriteTeamlbl = new System.Windows.Forms.Label();
+            this.favoritePlayerlbl = new System.Windows.Forms.Label();
+            this.favoritelbl = new System.Windows.Forms.Label();
+            this.noResultslbl = new System.Windows.Forms.Label();
             this.favoritePnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -229,32 +230,15 @@
             this.favoritePnl.TabIndex = 19;
             this.favoritePnl.Visible = false;
             // 
-            // favoritelbl
+            // favoriteTeamBtn
             // 
-            this.favoritelbl.AutoSize = true;
-            this.favoritelbl.Location = new System.Drawing.Point(6, 4);
-            this.favoritelbl.Name = "favoritelbl";
-            this.favoritelbl.Size = new System.Drawing.Size(50, 13);
-            this.favoritelbl.TabIndex = 0;
-            this.favoritelbl.Text = "Favorites";
-            // 
-            // favoritePlayerlbl
-            // 
-            this.favoritePlayerlbl.AutoSize = true;
-            this.favoritePlayerlbl.Location = new System.Drawing.Point(9, 40);
-            this.favoritePlayerlbl.Name = "favoritePlayerlbl";
-            this.favoritePlayerlbl.Size = new System.Drawing.Size(36, 13);
-            this.favoritePlayerlbl.TabIndex = 1;
-            this.favoritePlayerlbl.Text = "Player";
-            // 
-            // favoriteTeamlbl
-            // 
-            this.favoriteTeamlbl.AutoSize = true;
-            this.favoriteTeamlbl.Location = new System.Drawing.Point(9, 69);
-            this.favoriteTeamlbl.Name = "favoriteTeamlbl";
-            this.favoriteTeamlbl.Size = new System.Drawing.Size(34, 13);
-            this.favoriteTeamlbl.TabIndex = 2;
-            this.favoriteTeamlbl.Text = "Team";
+            this.favoriteTeamBtn.Location = new System.Drawing.Point(49, 64);
+            this.favoriteTeamBtn.Name = "favoriteTeamBtn";
+            this.favoriteTeamBtn.Size = new System.Drawing.Size(148, 23);
+            this.favoriteTeamBtn.TabIndex = 4;
+            this.favoriteTeamBtn.Text = "None";
+            this.favoriteTeamBtn.UseVisualStyleBackColor = true;
+            this.favoriteTeamBtn.Click += new System.EventHandler(this.favoriteTeamBtn_Click);
             // 
             // favoritePlayerBtn
             // 
@@ -266,21 +250,51 @@
             this.favoritePlayerBtn.UseVisualStyleBackColor = true;
             this.favoritePlayerBtn.Click += new System.EventHandler(this.favoritePlayerBtn_Click);
             // 
-            // favoriteTeamBtn
+            // favoriteTeamlbl
             // 
-            this.favoriteTeamBtn.Location = new System.Drawing.Point(49, 64);
-            this.favoriteTeamBtn.Name = "favoriteTeamBtn";
-            this.favoriteTeamBtn.Size = new System.Drawing.Size(148, 23);
-            this.favoriteTeamBtn.TabIndex = 4;
-            this.favoriteTeamBtn.Text = "None";
-            this.favoriteTeamBtn.UseVisualStyleBackColor = true;
-            this.favoriteTeamBtn.Click += new System.EventHandler(this.favoriteTeamBtn_Click);
+            this.favoriteTeamlbl.AutoSize = true;
+            this.favoriteTeamlbl.Location = new System.Drawing.Point(9, 69);
+            this.favoriteTeamlbl.Name = "favoriteTeamlbl";
+            this.favoriteTeamlbl.Size = new System.Drawing.Size(34, 13);
+            this.favoriteTeamlbl.TabIndex = 2;
+            this.favoriteTeamlbl.Text = "Team";
+            // 
+            // favoritePlayerlbl
+            // 
+            this.favoritePlayerlbl.AutoSize = true;
+            this.favoritePlayerlbl.Location = new System.Drawing.Point(9, 40);
+            this.favoritePlayerlbl.Name = "favoritePlayerlbl";
+            this.favoritePlayerlbl.Size = new System.Drawing.Size(36, 13);
+            this.favoritePlayerlbl.TabIndex = 1;
+            this.favoritePlayerlbl.Text = "Player";
+            // 
+            // favoritelbl
+            // 
+            this.favoritelbl.AutoSize = true;
+            this.favoritelbl.Location = new System.Drawing.Point(6, 4);
+            this.favoritelbl.Name = "favoritelbl";
+            this.favoritelbl.Size = new System.Drawing.Size(50, 13);
+            this.favoritelbl.TabIndex = 0;
+            this.favoritelbl.Text = "Favorites";
+            // 
+            // noResultslbl
+            // 
+            this.noResultslbl.AutoSize = true;
+            this.noResultslbl.BackColor = System.Drawing.SystemColors.Control;
+            this.noResultslbl.ForeColor = System.Drawing.Color.IndianRed;
+            this.noResultslbl.Location = new System.Drawing.Point(515, 17);
+            this.noResultslbl.Name = "noResultslbl";
+            this.noResultslbl.Size = new System.Drawing.Size(54, 13);
+            this.noResultslbl.TabIndex = 20;
+            this.noResultslbl.Text = "No results";
+            this.noResultslbl.Visible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.noResultslbl);
             this.Controls.Add(this.favoritePnl);
             this.Controls.Add(this.adminLogInBtn);
             this.Controls.Add(this.logoutbtn);
@@ -335,5 +349,6 @@
         private System.Windows.Forms.Label favoriteTeamlbl;
         private System.Windows.Forms.Label favoritePlayerlbl;
         private System.Windows.Forms.Label favoritelbl;
+        private System.Windows.Forms.Label noResultslbl;
     }
 }

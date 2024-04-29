@@ -42,32 +42,48 @@ namespace FootballStatistics
             playersSearchResultsBox.Items.Clear();
             teamSearchResults.Clear();
             teamSearchResultsBox.Items.Clear();
+            SetNoResultTextVisibility(false);
+
+            bool noResults = true;
 
             //Search for players
             var playerSearch = await playerDataAccess.SearchPlayersAsync(searctxtBox.Text);
 
-            if (playerSearch != null)
+            if (playerSearch.Count > 0)
             {
+                noResults = false;
                 foreach (var player in playerSearch)
                 {
                     playersSearchResultsBox.Items.Add($"Name: {player.FullName} | Nationality: {player.Nationality} | Position: {player.Position}");
                     playerSearchResults.Add(player);
                 }
             }
-
-
-
+   
             //Search for teams
             var teamSearch = await teamDataAccess.SearchTeamsAsync(searctxtBox.Text);
 
-            if (teamSearch != null)
+            if (teamSearch.Count > 0)
             {
+                noResults = false;
+
                 foreach (var team in teamSearch)
                 {
                     teamSearchResultsBox.Items.Add($"TeamName: {team.TeamName} | country: {team.Country}");
                     teamSearchResults.Add(team);
                 }
             }
+
+            if (noResults)
+            {
+                SetNoResultTextVisibility(true);
+            }
+        }
+
+        private void SetNoResultTextVisibility(bool show)
+        {
+         
+            noResultslbl.Visible = show;
+            
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
