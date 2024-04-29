@@ -42,7 +42,7 @@ namespace FootballStatistics
             existingTeam.Games = gamesPlayedtxt.Text != "" && int.TryParse(gamesPlayedtxt.Text, out int games) ? games : existingTeam.Games;
             existingTeam.Goals = goalstxt.Text != "" && int.TryParse(goalstxt.Text, out int goals) ? goals : existingTeam.Goals;
 
-            var results = await teamDataAccess.UpdateTeamById(existingTeam);
+            var results = await teamDataAccess.UpdateTeamByIdAsync(existingTeam);
             if (results.MatchedCount == 0)
                 MessageBox.Show("No Matches found");
             else

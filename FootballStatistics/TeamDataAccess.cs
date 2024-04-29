@@ -110,7 +110,7 @@ namespace FootballStatistics
             }
         }
 
-        public async Task<ReplaceOneResult> UpdateTeamById(TeamModel existingTeam)
+        public async Task<ReplaceOneResult> UpdateTeamByIdAsync(TeamModel existingTeam)
         {
             try
             {
