@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.comparePlayersBtn = new System.Windows.Forms.Button();
             this.searchBtn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.addSelComPlayerBtn = new System.Windows.Forms.Button();
             this.signupBtn = new System.Windows.Forms.Button();
             this.playersSearchResultsBox = new System.Windows.Forms.ListBox();
             this.searctxtBox = new System.Windows.Forms.TextBox();
@@ -52,18 +52,30 @@
             this.favoriteTeamlbl = new System.Windows.Forms.Label();
             this.favoritePlayerlbl = new System.Windows.Forms.Label();
             this.favoritelbl = new System.Windows.Forms.Label();
-            this.noResultslbl = new System.Windows.Forms.Label();
+            this.comparePlayersBox = new System.Windows.Forms.ListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.remSelComPlayerBtn = new System.Windows.Forms.Button();
+            this.playerComLbl = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.teamComLbl = new System.Windows.Forms.Label();
+            this.remSelComTeam = new System.Windows.Forms.Button();
+            this.CompareTeamBox = new System.Windows.Forms.ListBox();
+            this.CompareTeamBtn = new System.Windows.Forms.Button();
+            this.addSelComTeam = new System.Windows.Forms.Button();
             this.favoritePnl.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // comparePlayersBtn
             // 
-            this.button1.Location = new System.Drawing.Point(638, 52);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Compare";
-            this.button1.UseVisualStyleBackColor = true;
+            this.comparePlayersBtn.Location = new System.Drawing.Point(113, 136);
+            this.comparePlayersBtn.Name = "comparePlayersBtn";
+            this.comparePlayersBtn.Size = new System.Drawing.Size(75, 23);
+            this.comparePlayersBtn.TabIndex = 0;
+            this.comparePlayersBtn.Text = "Compare";
+            this.comparePlayersBtn.UseVisualStyleBackColor = true;
+            this.comparePlayersBtn.Click += new System.EventHandler(this.comparePlayersBtn_Click);
             // 
             // searchBtn
             // 
@@ -75,14 +87,15 @@
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
-            // button3
+            // addSelComPlayerBtn
             // 
-            this.button3.Location = new System.Drawing.Point(638, 342);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Search";
-            this.button3.UseVisualStyleBackColor = true;
+            this.addSelComPlayerBtn.Location = new System.Drawing.Point(16, 120);
+            this.addSelComPlayerBtn.Name = "addSelComPlayerBtn";
+            this.addSelComPlayerBtn.Size = new System.Drawing.Size(75, 23);
+            this.addSelComPlayerBtn.TabIndex = 2;
+            this.addSelComPlayerBtn.Text = "Add";
+            this.addSelComPlayerBtn.UseVisualStyleBackColor = true;
+            this.addSelComPlayerBtn.Click += new System.EventHandler(this.addSelComPlayerBtn_Click);
             // 
             // signupBtn
             // 
@@ -277,24 +290,111 @@
             this.favoritelbl.TabIndex = 0;
             this.favoritelbl.Text = "Favorites";
             // 
-            // noResultslbl
+            // comparePlayersBox
             // 
-            this.noResultslbl.AutoSize = true;
-            this.noResultslbl.BackColor = System.Drawing.SystemColors.Control;
-            this.noResultslbl.ForeColor = System.Drawing.Color.IndianRed;
-            this.noResultslbl.Location = new System.Drawing.Point(515, 17);
-            this.noResultslbl.Name = "noResultslbl";
-            this.noResultslbl.Size = new System.Drawing.Size(54, 13);
-            this.noResultslbl.TabIndex = 20;
-            this.noResultslbl.Text = "No results";
-            this.noResultslbl.Visible = false;
+            this.comparePlayersBox.FormattingEnabled = true;
+            this.comparePlayersBox.Location = new System.Drawing.Point(32, 26);
+            this.comparePlayersBox.Name = "comparePlayersBox";
+            this.comparePlayersBox.Size = new System.Drawing.Size(134, 82);
+            this.comparePlayersBox.TabIndex = 20;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.playerComLbl);
+            this.panel1.Controls.Add(this.remSelComPlayerBtn);
+            this.panel1.Controls.Add(this.comparePlayersBox);
+            this.panel1.Controls.Add(this.comparePlayersBtn);
+            this.panel1.Controls.Add(this.addSelComPlayerBtn);
+            this.panel1.Location = new System.Drawing.Point(579, 54);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 173);
+            this.panel1.TabIndex = 21;
+            // 
+            // remSelComPlayerBtn
+            // 
+            this.remSelComPlayerBtn.Location = new System.Drawing.Point(16, 147);
+            this.remSelComPlayerBtn.Name = "remSelComPlayerBtn";
+            this.remSelComPlayerBtn.Size = new System.Drawing.Size(75, 23);
+            this.remSelComPlayerBtn.TabIndex = 21;
+            this.remSelComPlayerBtn.Text = "Remove";
+            this.remSelComPlayerBtn.UseVisualStyleBackColor = true;
+            this.remSelComPlayerBtn.Click += new System.EventHandler(this.remSelComPlayerBtn_Click);
+            // 
+            // playerComLbl
+            // 
+            this.playerComLbl.AutoSize = true;
+            this.playerComLbl.Location = new System.Drawing.Point(4, 4);
+            this.playerComLbl.Name = "playerComLbl";
+            this.playerComLbl.Size = new System.Drawing.Size(94, 13);
+            this.playerComLbl.TabIndex = 22;
+            this.playerComLbl.Text = "Player Comparison";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.teamComLbl);
+            this.panel2.Controls.Add(this.remSelComTeam);
+            this.panel2.Controls.Add(this.CompareTeamBox);
+            this.panel2.Controls.Add(this.CompareTeamBtn);
+            this.panel2.Controls.Add(this.addSelComTeam);
+            this.panel2.Location = new System.Drawing.Point(579, 243);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 173);
+            this.panel2.TabIndex = 23;
+            // 
+            // teamComLbl
+            // 
+            this.teamComLbl.AutoSize = true;
+            this.teamComLbl.Location = new System.Drawing.Point(4, 4);
+            this.teamComLbl.Name = "teamComLbl";
+            this.teamComLbl.Size = new System.Drawing.Size(92, 13);
+            this.teamComLbl.TabIndex = 22;
+            this.teamComLbl.Text = "Team Comparison";
+            // 
+            // remSelComTeam
+            // 
+            this.remSelComTeam.Location = new System.Drawing.Point(16, 147);
+            this.remSelComTeam.Name = "remSelComTeam";
+            this.remSelComTeam.Size = new System.Drawing.Size(75, 23);
+            this.remSelComTeam.TabIndex = 21;
+            this.remSelComTeam.Text = "Remove";
+            this.remSelComTeam.UseVisualStyleBackColor = true;
+            this.remSelComTeam.Click += new System.EventHandler(this.remSelComTeam_Click);
+            // 
+            // CompareTeamBox
+            // 
+            this.CompareTeamBox.FormattingEnabled = true;
+            this.CompareTeamBox.Location = new System.Drawing.Point(32, 26);
+            this.CompareTeamBox.Name = "CompareTeamBox";
+            this.CompareTeamBox.Size = new System.Drawing.Size(134, 82);
+            this.CompareTeamBox.TabIndex = 20;
+            // 
+            // CompareTeamBtn
+            // 
+            this.CompareTeamBtn.Location = new System.Drawing.Point(113, 136);
+            this.CompareTeamBtn.Name = "CompareTeamBtn";
+            this.CompareTeamBtn.Size = new System.Drawing.Size(75, 23);
+            this.CompareTeamBtn.TabIndex = 0;
+            this.CompareTeamBtn.Text = "Compare";
+            this.CompareTeamBtn.UseVisualStyleBackColor = true;
+            this.CompareTeamBtn.Click += new System.EventHandler(this.CompareTeamBtn_Click);
+            // 
+            // addSelComTeam
+            // 
+            this.addSelComTeam.Location = new System.Drawing.Point(16, 120);
+            this.addSelComTeam.Name = "addSelComTeam";
+            this.addSelComTeam.Size = new System.Drawing.Size(75, 23);
+            this.addSelComTeam.TabIndex = 2;
+            this.addSelComTeam.Text = "Add";
+            this.addSelComTeam.UseVisualStyleBackColor = true;
+            this.addSelComTeam.Click += new System.EventHandler(this.addSelComTeam_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.noResultslbl);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.favoritePnl);
             this.Controls.Add(this.adminLogInBtn);
             this.Controls.Add(this.logoutbtn);
@@ -311,13 +411,15 @@
             this.Controls.Add(this.searctxtBox);
             this.Controls.Add(this.playersSearchResultsBox);
             this.Controls.Add(this.signupBtn);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.searchBtn);
-            this.Controls.Add(this.button1);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.favoritePnl.ResumeLayout(false);
             this.favoritePnl.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,9 +427,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button comparePlayersBtn;
         private System.Windows.Forms.Button searchBtn;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button addSelComPlayerBtn;
         private System.Windows.Forms.Button signupBtn;
         private System.Windows.Forms.ListBox playersSearchResultsBox;
         private System.Windows.Forms.TextBox searctxtBox;
@@ -349,6 +451,15 @@
         private System.Windows.Forms.Label favoriteTeamlbl;
         private System.Windows.Forms.Label favoritePlayerlbl;
         private System.Windows.Forms.Label favoritelbl;
-        private System.Windows.Forms.Label noResultslbl;
+        private System.Windows.Forms.ListBox comparePlayersBox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label playerComLbl;
+        private System.Windows.Forms.Button remSelComPlayerBtn;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label teamComLbl;
+        private System.Windows.Forms.Button remSelComTeam;
+        private System.Windows.Forms.ListBox CompareTeamBox;
+        private System.Windows.Forms.Button CompareTeamBtn;
+        private System.Windows.Forms.Button addSelComTeam;
     }
 }

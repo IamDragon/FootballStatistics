@@ -139,6 +139,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -178,6 +179,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlayerComparison.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayerComparison.Designer.cs">
+      <DependentUpon>PlayerComparison.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlayerDataAccess.cs" />
     <Compile Include="ShowPlayer.cs">
       <SubType>Form</SubType>
@@ -193,6 +200,12 @@
     </Compile>
     <Compile Include="SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeamComparison.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeamComparison.Designer.cs">
+      <DependentUpon>TeamComparison.cs</DependentUpon>
     </Compile>
     <Compile Include="TeamDataAccess.cs" />
     <Compile Include="TeamModel.cs" />
@@ -222,6 +235,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlayerComparison.resx">
+      <DependentUpon>PlayerComparison.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -236,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeamComparison.resx">
+      <DependentUpon>TeamComparison.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatePlayerPage.resx">
       <DependentUpon>UpdatePlayerPage.cs</DependentUpon>
