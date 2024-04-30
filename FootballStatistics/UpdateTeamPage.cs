@@ -30,7 +30,7 @@ namespace FootballStatistics
             TeamModel existingTeam = await teamDataAccess.GetTeamByIdAsync(teamID);
             if (existingTeam == null)
             {
-                MessageBox.Show("PlayerId invalid");
+                MessageBox.Show("TeamID invalid");
                 return;
             }
 
@@ -64,6 +64,11 @@ namespace FootballStatistics
         }
 
         private void updatePnl_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void UpdateTeamPage_Load(object sender, EventArgs e)
         {
 
         }

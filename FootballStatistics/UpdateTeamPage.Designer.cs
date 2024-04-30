@@ -179,6 +179,7 @@
             this.Controls.Add(this.Updatebtn);
             this.Name = "UpdateTeamPage";
             this.Text = "UpdateTeamPage";
+            this.Load += new System.EventHandler(this.UpdateTeamPage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

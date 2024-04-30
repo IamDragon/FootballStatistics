@@ -30,6 +30,8 @@
         {
             this.addbtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.teamIDtxt = new System.Windows.Forms.TextBox();
+            this.teamIDlb = new System.Windows.Forms.Label();
             this.positiontxt = new System.Windows.Forms.TextBox();
             this.positionlbl = new System.Windows.Forms.Label();
             this.assiststxt = new System.Windows.Forms.TextBox();
@@ -42,8 +44,6 @@
             this.nationalitylbl = new System.Windows.Forms.Label();
             this.fullNametxt = new System.Windows.Forms.TextBox();
             this.fullNamelbl = new System.Windows.Forms.Label();
-            this.teamIDtxt = new System.Windows.Forms.TextBox();
-            this.teamIDlb = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +77,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(239, 404);
             this.panel1.TabIndex = 1;
+            // 
+            // teamIDtxt
+            // 
+            this.teamIDtxt.Location = new System.Drawing.Point(125, 47);
+            this.teamIDtxt.Name = "teamIDtxt";
+            this.teamIDtxt.Size = new System.Drawing.Size(100, 20);
+            this.teamIDtxt.TabIndex = 13;
+            // 
+            // teamIDlb
+            // 
+            this.teamIDlb.AutoSize = true;
+            this.teamIDlb.Location = new System.Drawing.Point(16, 50);
+            this.teamIDlb.Name = "teamIDlb";
+            this.teamIDlb.Size = new System.Drawing.Size(45, 13);
+            this.teamIDlb.TabIndex = 12;
+            this.teamIDlb.Text = "TeamID";
             // 
             // positiontxt
             // 
@@ -174,23 +190,6 @@
             this.fullNamelbl.Size = new System.Drawing.Size(54, 13);
             this.fullNamelbl.TabIndex = 0;
             this.fullNamelbl.Text = "Full Name";
-            this.fullNamelbl.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // teamIDtxt
-            // 
-            this.teamIDtxt.Location = new System.Drawing.Point(125, 47);
-            this.teamIDtxt.Name = "teamIDtxt";
-            this.teamIDtxt.Size = new System.Drawing.Size(100, 20);
-            this.teamIDtxt.TabIndex = 13;
-            // 
-            // teamIDlb
-            // 
-            this.teamIDlb.AutoSize = true;
-            this.teamIDlb.Location = new System.Drawing.Point(16, 50);
-            this.teamIDlb.Name = "teamIDlb";
-            this.teamIDlb.Size = new System.Drawing.Size(45, 13);
-            this.teamIDlb.TabIndex = 12;
-            this.teamIDlb.Text = "TeamID";
             // 
             // AddPlayerPage
             // 
