@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.teamApanel1 = new System.Windows.Forms.Panel();
+            this.teamAIdLbl = new System.Windows.Forms.Label();
             this.teamApanel2 = new System.Windows.Forms.Panel();
+            this.teamAmvpIDlbl = new System.Windows.Forms.Label();
             this.teamAVotesTextbox = new System.Windows.Forms.TextBox();
             this.teamAGoalstextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -41,7 +43,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.teamBpanel1 = new System.Windows.Forms.Panel();
+            this.teamBIdLbl = new System.Windows.Forms.Label();
             this.teamBpanel2 = new System.Windows.Forms.Panel();
+            this.teamBmvpIDlbl = new System.Windows.Forms.Label();
             this.teamBVotesTextBox = new System.Windows.Forms.TextBox();
             this.teamBGoalsTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -64,13 +68,10 @@
             this.TeamAPlayersBox = new System.Windows.Forms.ListBox();
             this.label15 = new System.Windows.Forms.Label();
             this.TeamBPlayersBox = new System.Windows.Forms.ListBox();
-            this.teamAIdLbl = new System.Windows.Forms.Label();
-            this.teamBIdLbl = new System.Windows.Forms.Label();
-            this.teamAmvpIDlbl = new System.Windows.Forms.Label();
-            this.teamBmvpIDlbl = new System.Windows.Forms.Label();
             this.AddTeamAmvpBtn = new System.Windows.Forms.Button();
             this.AddTeamBmvpBtn = new System.Windows.Forms.Button();
             this.playerPanel = new System.Windows.Forms.Panel();
+            this.successLbl = new System.Windows.Forms.Label();
             this.teamApanel1.SuspendLayout();
             this.teamApanel2.SuspendLayout();
             this.teamBpanel1.SuspendLayout();
@@ -88,6 +89,16 @@
             this.teamApanel1.Size = new System.Drawing.Size(240, 225);
             this.teamApanel1.TabIndex = 0;
             // 
+            // teamAIdLbl
+            // 
+            this.teamAIdLbl.AutoSize = true;
+            this.teamAIdLbl.ForeColor = System.Drawing.Color.IndianRed;
+            this.teamAIdLbl.Location = new System.Drawing.Point(66, 11);
+            this.teamAIdLbl.Name = "teamAIdLbl";
+            this.teamAIdLbl.Size = new System.Drawing.Size(18, 13);
+            this.teamAIdLbl.TabIndex = 9;
+            this.teamAIdLbl.Text = "ID";
+            // 
             // teamApanel2
             // 
             this.teamApanel2.Controls.Add(this.teamAmvpIDlbl);
@@ -101,6 +112,16 @@
             this.teamApanel2.Name = "teamApanel2";
             this.teamApanel2.Size = new System.Drawing.Size(240, 186);
             this.teamApanel2.TabIndex = 8;
+            // 
+            // teamAmvpIDlbl
+            // 
+            this.teamAmvpIDlbl.AutoSize = true;
+            this.teamAmvpIDlbl.ForeColor = System.Drawing.Color.IndianRed;
+            this.teamAmvpIDlbl.Location = new System.Drawing.Point(70, 19);
+            this.teamAmvpIDlbl.Name = "teamAmvpIDlbl";
+            this.teamAmvpIDlbl.Size = new System.Drawing.Size(18, 13);
+            this.teamAmvpIDlbl.TabIndex = 11;
+            this.teamAmvpIDlbl.Text = "ID";
             // 
             // teamAVotesTextbox
             // 
@@ -201,6 +222,16 @@
             this.teamBpanel1.Size = new System.Drawing.Size(240, 225);
             this.teamBpanel1.TabIndex = 3;
             // 
+            // teamBIdLbl
+            // 
+            this.teamBIdLbl.AutoSize = true;
+            this.teamBIdLbl.ForeColor = System.Drawing.Color.IndianRed;
+            this.teamBIdLbl.Location = new System.Drawing.Point(66, 11);
+            this.teamBIdLbl.Name = "teamBIdLbl";
+            this.teamBIdLbl.Size = new System.Drawing.Size(18, 13);
+            this.teamBIdLbl.TabIndex = 10;
+            this.teamBIdLbl.Text = "ID";
+            // 
             // teamBpanel2
             // 
             this.teamBpanel2.Controls.Add(this.teamBmvpIDlbl);
@@ -214,6 +245,16 @@
             this.teamBpanel2.Name = "teamBpanel2";
             this.teamBpanel2.Size = new System.Drawing.Size(240, 186);
             this.teamBpanel2.TabIndex = 9;
+            // 
+            // teamBmvpIDlbl
+            // 
+            this.teamBmvpIDlbl.AutoSize = true;
+            this.teamBmvpIDlbl.ForeColor = System.Drawing.Color.IndianRed;
+            this.teamBmvpIDlbl.Location = new System.Drawing.Point(76, 19);
+            this.teamBmvpIDlbl.Name = "teamBmvpIDlbl";
+            this.teamBmvpIDlbl.Size = new System.Drawing.Size(18, 13);
+            this.teamBmvpIDlbl.TabIndex = 12;
+            this.teamBmvpIDlbl.Text = "ID";
             // 
             // teamBVotesTextBox
             // 
@@ -278,7 +319,7 @@
             // 
             // addMatchButton
             // 
-            this.addMatchButton.Location = new System.Drawing.Point(792, 734);
+            this.addMatchButton.Location = new System.Drawing.Point(792, 723);
             this.addMatchButton.Name = "addMatchButton";
             this.addMatchButton.Size = new System.Drawing.Size(117, 33);
             this.addMatchButton.TabIndex = 5;
@@ -413,46 +454,6 @@
             this.TeamBPlayersBox.Size = new System.Drawing.Size(302, 186);
             this.TeamBPlayersBox.TabIndex = 31;
             // 
-            // teamAIdLbl
-            // 
-            this.teamAIdLbl.AutoSize = true;
-            this.teamAIdLbl.ForeColor = System.Drawing.Color.IndianRed;
-            this.teamAIdLbl.Location = new System.Drawing.Point(66, 11);
-            this.teamAIdLbl.Name = "teamAIdLbl";
-            this.teamAIdLbl.Size = new System.Drawing.Size(18, 13);
-            this.teamAIdLbl.TabIndex = 9;
-            this.teamAIdLbl.Text = "ID";
-            // 
-            // teamBIdLbl
-            // 
-            this.teamBIdLbl.AutoSize = true;
-            this.teamBIdLbl.ForeColor = System.Drawing.Color.IndianRed;
-            this.teamBIdLbl.Location = new System.Drawing.Point(66, 11);
-            this.teamBIdLbl.Name = "teamBIdLbl";
-            this.teamBIdLbl.Size = new System.Drawing.Size(18, 13);
-            this.teamBIdLbl.TabIndex = 10;
-            this.teamBIdLbl.Text = "ID";
-            // 
-            // teamAmvpIDlbl
-            // 
-            this.teamAmvpIDlbl.AutoSize = true;
-            this.teamAmvpIDlbl.ForeColor = System.Drawing.Color.IndianRed;
-            this.teamAmvpIDlbl.Location = new System.Drawing.Point(70, 19);
-            this.teamAmvpIDlbl.Name = "teamAmvpIDlbl";
-            this.teamAmvpIDlbl.Size = new System.Drawing.Size(18, 13);
-            this.teamAmvpIDlbl.TabIndex = 11;
-            this.teamAmvpIDlbl.Text = "ID";
-            // 
-            // teamBmvpIDlbl
-            // 
-            this.teamBmvpIDlbl.AutoSize = true;
-            this.teamBmvpIDlbl.ForeColor = System.Drawing.Color.IndianRed;
-            this.teamBmvpIDlbl.Location = new System.Drawing.Point(76, 19);
-            this.teamBmvpIDlbl.Name = "teamBmvpIDlbl";
-            this.teamBmvpIDlbl.Size = new System.Drawing.Size(18, 13);
-            this.teamBmvpIDlbl.TabIndex = 12;
-            this.teamBmvpIDlbl.Text = "ID";
-            // 
             // AddTeamAmvpBtn
             // 
             this.AddTeamAmvpBtn.Location = new System.Drawing.Point(3, 227);
@@ -486,11 +487,24 @@
             this.playerPanel.Size = new System.Drawing.Size(669, 276);
             this.playerPanel.TabIndex = 35;
             // 
+            // successLbl
+            // 
+            this.successLbl.AutoSize = true;
+            this.successLbl.Cursor = System.Windows.Forms.Cursors.Default;
+            this.successLbl.ForeColor = System.Drawing.Color.ForestGreen;
+            this.successLbl.Location = new System.Drawing.Point(789, 759);
+            this.successLbl.Name = "successLbl";
+            this.successLbl.Size = new System.Drawing.Size(131, 13);
+            this.successLbl.TabIndex = 36;
+            this.successLbl.Text = "Successfully added match";
+            this.successLbl.Visible = false;
+            // 
             // AddMatchPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(975, 803);
+            this.Controls.Add(this.successLbl);
             this.Controls.Add(this.playerPanel);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.AddTeamBbtn);
@@ -571,5 +585,6 @@
         private System.Windows.Forms.Button AddTeamAmvpBtn;
         private System.Windows.Forms.Button AddTeamBmvpBtn;
         private System.Windows.Forms.Panel playerPanel;
+        private System.Windows.Forms.Label successLbl;
     }
 }

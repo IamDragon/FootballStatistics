@@ -82,6 +82,8 @@ namespace FootballStatistics
 
         private async void Search()
         {
+            successLbl.Visible = false;
+
             SetNoResultTextVisibility(false);
 
 
@@ -191,39 +193,43 @@ namespace FootballStatistics
                     TeamB = ObjectId.Parse(teamBIdLbl.Text),
                     MatchDate = matchDateTimePicker.Value.Date,
                 });
-
-                return;
-            }
-
-            ObjectId winner;
-            if (teamAWinCheckbox.Checked)
-            {
-                winner = ObjectId.Parse(teamAIdLbl.Text);
             }
             else
             {
-                winner = ObjectId.Parse(teamBIdLbl.Text);
+                ObjectId winner;
+                if (teamAWinCheckbox.Checked)
+                {
+                    winner = ObjectId.Parse(teamAIdLbl.Text);
+                }
+                else
+                {
+                    winner = ObjectId.Parse(teamBIdLbl.Text);
+                }
+
+                await matchDataAccess.AddMatchAsync(new MatchModel
+                {
+                    Winner = winner,
+                    TeamA = ObjectId.Parse(teamAIdLbl.Text),
+                    TeamB = ObjectId.Parse(teamBIdLbl.Text),
+                    MatchDate = matchDateTimePicker.Value.Date,
+                    TeamAMVP = ObjectId.Parse(teamAmvpIDlbl.Text),
+                    TeamBMVP = ObjectId.Parse(teamBmvpIDlbl.Text),
+                    TeamAGoals = int.Parse(teamAGoalstextBox.Text),
+                    TeamBGoals = int.Parse(teamBGoalsTextBox.Text),
+                    teamAVotes = int.Parse(teamAVotesTextbox.Text),
+                    teamBVotes = int.Parse(teamBVotesTextBox.Text)
+                });
             }
 
-            await matchDataAccess.AddMatchAsync(new MatchModel
-            {
-                Winner = winner,
-                TeamA = ObjectId.Parse(teamAIdLbl.Text),
-                TeamB = ObjectId.Parse(teamBIdLbl.Text),
-                MatchDate = matchDateTimePicker.Value.Date,
-                TeamAMVP = ObjectId.Parse(teamAmvpIDlbl.Text),
-                TeamBMVP = ObjectId.Parse(teamBmvpIDlbl.Text),
-                TeamAGoals = int.Parse(teamAGoalstextBox.Text),
-                TeamBGoals = int.Parse(teamBGoalsTextBox.Text),
-                teamAVotes = int.Parse(teamAVotesTextbox.Text),
-                teamBVotes = int.Parse(teamBVotesTextBox.Text)
-            });
+            successLbl.Visible = true;
 
-            Console.WriteLine("Match Added");
+            Reset();
+          
+
 
         }
 
-        private void ResetTextBoxes()
+        private void Reset()
         {
             teamAIdLbl.Text = "ID";
             teamBIdLbl.Text = "ID";
@@ -237,6 +243,9 @@ namespace FootballStatistics
             teamSearchResultsBox.Items.Clear();
             TeamAPlayersBox.Items.Clear();
             TeamBPlayersBox.Items.Clear();
+
+            teamAWinCheckbox.Checked = false;
+            teamBWinCheckbox.Checked = false;
         }
 
         private void AddTeamAbtn_Click(object sender, EventArgs e)

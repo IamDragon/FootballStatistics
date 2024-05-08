@@ -75,6 +75,7 @@
             this.Controls.Add(this.goalChart);
             this.Name = "TeamComparison";
             this.Text = "TeamComparison";
+            this.Load += new System.EventHandler(this.TeamComparison_Load);
             ((System.ComponentModel.ISupportInitialize)(this.goalChart)).EndInit();
             this.ResumeLayout(false);
 

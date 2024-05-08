@@ -36,5 +36,10 @@ namespace FootballStatistics
         {
 
         }
+
+        private void TeamComparison_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
