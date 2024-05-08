@@ -262,5 +262,15 @@ namespace FootballStatistics
                 CompareTeamBox.Items.RemoveAt(index);
             }
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

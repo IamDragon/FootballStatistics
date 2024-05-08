@@ -127,5 +127,21 @@ namespace FootballStatistics
                 return false;
             }
         }
+
+        public async Task<List<PlayerModel>> GetPlayersByTeamId(string teamID)
+        {
+            try
+            {
+                var players = ConnectToMongo<PlayerModel>(PlayerCollection);
+                var result = await players.FindAsync(p => p.TeamID == teamID);
+                var list = result.ToList();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while retrieving players by team ID: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null; 
+            }
+        }
     }
 }

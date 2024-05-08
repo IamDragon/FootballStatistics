@@ -16,7 +16,7 @@ internal static class Program
     static void Main()
     {
         //Connect to db
-        string connectionString = "mongodb+srv://Marco:vQHHnVDoa3%402we@cluster0.xlbfkzj.mongodb.net/";
+        string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
         string databaseName = "fooballstats";
         string PlayersCollection = "players";
         string TeamsCollection = "teams";
@@ -46,7 +46,10 @@ internal static class Program
         //Application.Run(new AddPlayerPage());
         //Application.Run(new AddTeamPage());
         //Application.Run(new ShowPlayer("6627c76f8a2e481468fcf5e6"));
-        Application.Run(new MainForm());
+
+        AdminDataAccess adminDataAccess = new AdminDataAccess();
+
+        Application.Run(new AddMatchPage());
         //Application.Run(new PlayerComparison(new List<string> { "662fb2b58b52cf1a95d76489", "662e27013216bb3fac1e8804" }));
     }
 }

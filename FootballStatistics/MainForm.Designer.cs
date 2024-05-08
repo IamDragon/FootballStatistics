@@ -141,6 +141,7 @@
             this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Teams";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // teamSearchResultsBox
             // 
@@ -427,6 +428,7 @@
             this.Controls.Add(this.searchBtn);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.favoritePnl.ResumeLayout(false);
             this.favoritePnl.PerformLayout();
             this.panel1.ResumeLayout(false);
