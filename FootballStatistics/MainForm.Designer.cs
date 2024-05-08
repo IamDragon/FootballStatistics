@@ -38,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.teamSearchResultsBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.matchSearchResultsBox = new System.Windows.Forms.ListBox();
             this.loginBtn = new System.Windows.Forms.Button();
             this.passwprdlbl = new System.Windows.Forms.Label();
             this.usernamelbl = new System.Windows.Forms.Label();
@@ -161,13 +161,13 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "Matches";
             // 
-            // listBox2
+            // matchSearchResultsBox
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(230, 330);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(306, 108);
-            this.listBox2.TabIndex = 10;
+            this.matchSearchResultsBox.FormattingEnabled = true;
+            this.matchSearchResultsBox.Location = new System.Drawing.Point(230, 330);
+            this.matchSearchResultsBox.Name = "matchSearchResultsBox";
+            this.matchSearchResultsBox.Size = new System.Drawing.Size(306, 108);
+            this.matchSearchResultsBox.TabIndex = 10;
             // 
             // loginBtn
             // 
@@ -418,7 +418,7 @@
             this.Controls.Add(this.passwordtxt);
             this.Controls.Add(this.usernametxt);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.matchSearchResultsBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.teamSearchResultsBox);
             this.Controls.Add(this.playerslbl);
@@ -452,7 +452,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox teamSearchResultsBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox matchSearchResultsBox;
         private System.Windows.Forms.Button loginBtn;
         private System.Windows.Forms.Label passwprdlbl;
         private System.Windows.Forms.Label usernamelbl;

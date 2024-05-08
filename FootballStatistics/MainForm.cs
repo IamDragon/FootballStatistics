@@ -22,6 +22,7 @@ namespace FootballStatistics
         //searchResults
         List<PlayerModel> playerSearchResults = new List<PlayerModel>();
         List<TeamModel> teamSearchResults = new List<TeamModel>();
+        List<MatchModel> matchSearchResults = new List<MatchModel>();
 
         //Comparison
         List<PlayerModel> playersToCompare = new List<PlayerModel>();
@@ -32,6 +33,8 @@ namespace FootballStatistics
         UserDataAccess userDataAccess;
         PlayerDataAccess playerDataAccess;
         TeamDataAccess teamDataAccess;
+        MatchDataAccess matchDataAccess;
+
         private string userID; //logged in userID - Login Form changes this and will have a reference
         public MainForm()
         {
@@ -39,6 +42,7 @@ namespace FootballStatistics
             userDataAccess = new UserDataAccess();
             playerDataAccess = new PlayerDataAccess();
             teamDataAccess = new TeamDataAccess();
+            matchDataAccess = new MatchDataAccess();
         }
 
         private async void Search()
@@ -47,6 +51,8 @@ namespace FootballStatistics
             playersSearchResultsBox.Items.Clear();
             teamSearchResults.Clear();
             teamSearchResultsBox.Items.Clear();
+            matchSearchResults.Clear();
+            matchSearchResultsBox.Items.Clear();
             SetNoResultTextVisibility(false);
 
             bool noResults = true;
@@ -75,6 +81,22 @@ namespace FootballStatistics
                 {
                     teamSearchResultsBox.Items.Add($"TeamName: {team.TeamName} | country: {team.Country}");
                     teamSearchResults.Add(team);
+                }
+            }
+
+            var matchSearch = await matchDataAccess.SearchMatchesAsync(searctxtBox.Text);
+
+            if (matchSearch.Count > 0)
+            {
+                noResults = false;
+
+                foreach (var match in matchSearch)
+                {
+                    var teamA = await teamDataAccess.GetTeamByIdAsync(match.TeamA.ToString());
+                    var teamB = await teamDataAccess.GetTeamByIdAsync(match.TeamB.ToString());
+
+                    matchSearchResultsBox.Items.Add($"Team A Name: {teamA.TeamName} | Team B Name: {teamB.TeamName} | Date: {match.MatchDate}");
+                    matchSearchResults.Add(match);
                 }
             }
 

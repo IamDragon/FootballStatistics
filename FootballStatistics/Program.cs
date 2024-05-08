@@ -20,12 +20,14 @@ internal static class Program
         string databaseName = "fooballstats";
         string PlayersCollection = "players";
         string TeamsCollection = "teams";
+        string MatchCollection = "matches";
         //string matches = "matches";
 
         var client = new MongoClient(connectionString);
         var db = client.GetDatabase(databaseName);
         var players = db.GetCollection<PlayerModel>(PlayersCollection);
         var teams = db.GetCollection<TeamModel>(TeamsCollection);
+        var matches = db.GetCollection<MatchModel>(MatchCollection);
 
         //Create index for searching
         var playerName = Builders<PlayerModel>.IndexKeys.Text(player => player.FullName);
@@ -49,7 +51,8 @@ internal static class Program
 
         AdminDataAccess adminDataAccess = new AdminDataAccess();
 
-        Application.Run(new AddMatchPage());
+        Application.Run(new MainForm());
+
         //Application.Run(new PlayerComparison(new List<string> { "662fb2b58b52cf1a95d76489", "662e27013216bb3fac1e8804" }));
     }
 }

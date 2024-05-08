@@ -216,6 +216,12 @@
       <DependentUpon>TeamComparison.cs</DependentUpon>
     </Compile>
     <Compile Include="TeamDataAccess.cs" />
+    <Compile Include="ShowTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowTeam.Designer.cs">
+      <DependentUpon>ShowTeam.cs</DependentUpon>
+    </Compile>
     <Compile Include="TeamModel.cs" />
     <Compile Include="UpdatePlayerPage.cs">
       <SubType>Form</SubType>
@@ -260,6 +266,9 @@
     </Compile>
     <EmbeddedResource Include="ShowPlayer.resx">
       <DependentUpon>ShowPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowTeam.resx">
+      <DependentUpon>ShowTeam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>

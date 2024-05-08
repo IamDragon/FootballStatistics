@@ -67,5 +67,25 @@ namespace FootballStatistics
                 return new List<MatchModel>();
             }
         }
+
+        public async Task<List<MatchModel>> SearchMatchesAsync(string searchString)
+        {
+            try
+            {
+                var matches = ConnectToMongo<MatchModel>(MatchCollection);
+                var matchFilter = Builders<MatchModel>.Filter.Text(searchString);
+                var matchQuery = await matches.Aggregate().Match(matchFilter).ToListAsync();
+
+                return matchQuery;
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"An error occurred while searching for matches: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+        }
     }
 }
