@@ -7,7 +7,7 @@ namespace FootballStatistics
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string TeamID { get; set; }
+        public ObjectId TeamID { get; set; }
         public string TeamName { get; set; }
         public string Country { get; set; }
         public int Wins { get; set; }

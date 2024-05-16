@@ -29,6 +29,8 @@ namespace FootballStatistics
             matchDataAccess = new MatchDataAccess();
             teamDataAccess = new TeamDataAccess();
             playerDataAccess = new PlayerDataAccess();
+
+            matchDateTimePicker.Value = DateTime.Now.Date;
         }
 
         private void TeamWinnerCheckboxChanged(CheckBox checkBox)
@@ -178,7 +180,7 @@ namespace FootballStatistics
         {
             // If the match date is in the future, it's an upcoming match, otherwise the match has already happened
 
-            upcomingMatch = matchDateTimePicker.Value.Date <= DateTime.Today ? false : true;
+            upcomingMatch = matchDateTimePicker.Value.Date < DateTime.Today ? false : true;
 
             SetUpcomingMatchPanelsVisibility(!upcomingMatch); // Make the panel visible if the match has happened
         }
@@ -211,7 +213,7 @@ namespace FootballStatistics
                     Winner = winner,
                     TeamA = ObjectId.Parse(teamAIdLbl.Text),
                     TeamB = ObjectId.Parse(teamBIdLbl.Text),
-                    MatchDate = matchDateTimePicker.Value.Date,
+                    MatchDate = matchDateTimePicker.Value.ToUniversalTime().Date,
                     TeamAMVP = ObjectId.Parse(teamAmvpIDlbl.Text),
                     TeamBMVP = ObjectId.Parse(teamBmvpIDlbl.Text),
                     TeamAGoals = int.Parse(teamAGoalstextBox.Text),
@@ -254,7 +256,7 @@ namespace FootballStatistics
 
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-                teamAIdLbl.Text = teamSearchResults[index].TeamID;
+                teamAIdLbl.Text = teamSearchResults[index].TeamID.ToString();
                 ShowTeamAPlayers();
             }
         }
@@ -265,7 +267,7 @@ namespace FootballStatistics
 
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-                teamBIdLbl.Text = teamSearchResults[index].TeamID;
+                teamBIdLbl.Text = teamSearchResults[index].TeamID.ToString();
                 ShowTeamBPlayers();
             }
         }
@@ -306,7 +308,7 @@ namespace FootballStatistics
 
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-                teamAmvpIDlbl.Text = teamAplayers[index].TeamID;
+                teamAmvpIDlbl.Text = teamAplayers[index].PlayerID;
             }
         }
 
@@ -316,7 +318,7 @@ namespace FootballStatistics
 
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-                teamBmvpIDlbl.Text = teamBplayers[index].TeamID;
+                teamBmvpIDlbl.Text = teamBplayers[index].PlayerID;
             }
         }
     }

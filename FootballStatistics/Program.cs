@@ -43,6 +43,16 @@ internal static class Program
         var teamIndexModel = new CreateIndexModel<TeamModel>(teamIndexDef);
         teams.Indexes.CreateOne(teamIndexModel);
 
+        var matchDateIndex = Builders<MatchModel>.IndexKeys.Descending(match => match.MatchDate); // Index for sorting by match date
+        var teamAIndex = Builders<MatchModel>.IndexKeys.Ascending(match => match.TeamA); // Index for searching matches by TeamA
+        var teamBIndex = Builders<MatchModel>.IndexKeys.Ascending(match => match.TeamB); // Index for searching matches by TeamB
+        var winnerIndex = Builders<MatchModel>.IndexKeys.Ascending(match => match.Winner); // Index for searching matches by Winner
+        var matchIndexDef = Builders<MatchModel>.IndexKeys.Combine(matchDateIndex, teamAIndex, teamBIndex, winnerIndex);
+        var matchIndexModel = new CreateIndexModel<MatchModel>(matchIndexDef);
+        matches.Indexes.CreateOne(matchIndexModel);
+
+
+
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
         //Application.Run(new AddPlayerPage());
@@ -51,6 +61,9 @@ internal static class Program
 
         AdminDataAccess adminDataAccess = new AdminDataAccess();
 
+        MatchDataAccess matchDataAccess = new MatchDataAccess();
+
+        //Application.Run(new AddMatchPage());
         Application.Run(new MainForm());
 
         //Application.Run(new PlayerComparison(new List<string> { "662fb2b58b52cf1a95d76489", "662e27013216bb3fac1e8804" }));

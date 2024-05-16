@@ -38,7 +38,8 @@ namespace FootballStatistics
 
         private void addMatchBtn_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Open Add Match Page");
+            AddMatchPage addMatchPage = new AddMatchPage();
+            addMatchPage.Show();
         }
 
         private async void playerIDUpdateBtn_Click(object sender, EventArgs e)

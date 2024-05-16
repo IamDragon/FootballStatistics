@@ -194,6 +194,12 @@
       <DependentUpon>PlayerComparison.cs</DependentUpon>
     </Compile>
     <Compile Include="PlayerDataAccess.cs" />
+    <Compile Include="ShowMatchPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowMatchPage.Designer.cs">
+      <DependentUpon>ShowMatchPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowPlayer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,8 @@
     </Compile>
     <Compile Include="UserDataAccess.cs" />
     <Compile Include="UserModel.cs" />
+    <Compile Include="VoteDataAccess.cs" />
+    <Compile Include="VoteModel.cs" />
     <EmbeddedResource Include="AddMatchPage.resx">
       <DependentUpon>AddMatchPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,6 +272,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ShowMatchPage.resx">
+      <DependentUpon>ShowMatchPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShowPlayer.resx">
       <DependentUpon>ShowPlayer.cs</DependentUpon>
     </EmbeddedResource>

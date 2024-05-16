@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,7 @@ namespace FootballStatistics
             try
             {
                 var teams = ConnectToMongo<TeamModel>(TeamCollection);
-                var result = await teams.FindAsync<TeamModel>(p => p.TeamID == teamID);
+                var result = await teams.FindAsync<TeamModel>(p => p.TeamID == ObjectId.Parse(teamID));
                 var list = result.ToList<TeamModel>();
                 if (list.Count > 0)
                     return list.FirstOrDefault();

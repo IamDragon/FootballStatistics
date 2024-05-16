@@ -35,7 +35,7 @@ namespace FootballStatistics
         TeamDataAccess teamDataAccess;
         MatchDataAccess matchDataAccess;
 
-        private string userID; //logged in userID - Login Form changes this and will have a reference
+        private string userID = ""; //logged in userID - Login Form changes this and will have a reference
         public MainForm()
         {
             InitializeComponent();
@@ -43,6 +43,7 @@ namespace FootballStatistics
             playerDataAccess = new PlayerDataAccess();
             teamDataAccess = new TeamDataAccess();
             matchDataAccess = new MatchDataAccess();
+
         }
 
         private async void Search()
@@ -84,22 +85,6 @@ namespace FootballStatistics
                 }
             }
 
-            var matchSearch = await matchDataAccess.SearchMatchesAsync(searctxtBox.Text);
-
-            if (matchSearch.Count > 0)
-            {
-                noResults = false;
-
-                foreach (var match in matchSearch)
-                {
-                    var teamA = await teamDataAccess.GetTeamByIdAsync(match.TeamA.ToString());
-                    var teamB = await teamDataAccess.GetTeamByIdAsync(match.TeamB.ToString());
-
-                    matchSearchResultsBox.Items.Add($"Team A Name: {teamA.TeamName} | Team B Name: {teamB.TeamName} | Date: {match.MatchDate}");
-                    matchSearchResults.Add(match);
-                }
-            }
-
             if (noResults)
             {
                 SetNoResultTextVisibility(true);
@@ -133,8 +118,8 @@ namespace FootballStatistics
             int index = this.teamSearchResultsBox.IndexFromPoint(e.Location);
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-                //ShowTeam showTeamForm = new ShowPlayer(teamSearchResults[index].TeamID);
-                //showTeamForm.Show();
+                ShowTeam showTeamForm = new ShowTeam(teamSearchResults[index].TeamID.ToString(), userID);
+                showTeamForm.Show();
             }
         }
 
@@ -222,9 +207,14 @@ namespace FootballStatistics
             }
         }
 
-        private void favoriteTeamBtn_Click(object sender, EventArgs e)
+        private async void favoriteTeamBtn_Click(object sender, EventArgs e)
         {
-
+            UserModel user = await userDataAccess.GetUserByIDAsync(userID);
+            if(user.FavoriteTeam != null)
+            {
+                ShowTeam showTeam = new ShowTeam(user.FavoriteTeam);
+                showTeam.Show();
+            }
         }
 
         private void comparePlayersBtn_Click(object sender, EventArgs e)
@@ -292,6 +282,33 @@ namespace FootballStatistics
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void matchSearchResultsBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = this.matchSearchResultsBox.IndexFromPoint(e.Location);
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+                ShowMatchPage showMatchPage = new ShowMatchPage(matchSearchResults[index], userID);
+                showMatchPage.Show();
+            }
+        }
+
+        private async void ShowMatchesButton_Click(object sender, EventArgs e)
+        {
+            matchSearchResultsBox.Items.Clear();
+            matchSearchResults = await matchDataAccess.GetMatchesByDate(MatchDateTimePicker.Value.Date);
+
+            if (matchSearchResults != null)
+            {
+                foreach (var match in matchSearchResults)
+                {
+                    var teamA = await teamDataAccess.GetTeamByIdAsync(match.TeamA.ToString());
+                    var teamB = await teamDataAccess.GetTeamByIdAsync(match.TeamB.ToString());
+                    matchSearchResultsBox.Items.Add($"{teamA.TeamName} vs {teamB.TeamName}");
+                }
+            }
 
         }
     }

@@ -4,11 +4,11 @@ using System;
 
 namespace FootballStatistics
 {
-    internal class MatchModel
+    public class MatchModel
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string MatchID { get; set; }
+        public ObjectId MatchID { get; set; }
         public DateTime MatchDate { get; set; }
         public ObjectId? Winner { get; set; }
         public ObjectId TeamA { get; set; }
