@@ -16,13 +16,16 @@ namespace FootballStatistics
     {
         private string playerID;
         private string userID;
+        private PlayerModel playerModel;
         private PlayerDataAccess playerDataAccess;
+        private TeamDataAccess teamDataAccess;
         private UserDataAccess userDataAccess;
         public ShowPlayer(string playerID, string userID = "")
         {
             InitializeComponent();
             playerDataAccess = new PlayerDataAccess();
             userDataAccess = new UserDataAccess();
+            teamDataAccess = new TeamDataAccess();
             this.playerID = playerID;
             this.userID = userID;
             LoadValuesAsync();
@@ -33,13 +36,18 @@ namespace FootballStatistics
 
         private async void LoadValuesAsync()
         {
-            PlayerModel player = await playerDataAccess.GetPlayerByIDAsync(playerID);
-            fullnamnelblChange.Text = player.FullName;
-            nationalitylblChange.Text = player.Nationality;
-            goalslblChange.Text = player.Goals.ToString();
-            shotstakenlblChange.Text = player.ShotsTaken.ToString();
-            assistslblChange.Text = player.Assists.ToString();
-            positionlblChange.Text = player.Position;
+            playerModel = await playerDataAccess.GetPlayerByIDAsync(playerID);
+            TeamModel team = await teamDataAccess.GetTeamByIdAsync(playerModel.TeamID); 
+
+            fullnamnelblChange.Text = playerModel.FullName;
+            nationalitylblChange.Text = playerModel.Nationality;
+            goalslblChange.Text = playerModel.Goals.ToString();
+            shotstakenlblChange.Text = playerModel.ShotsTaken.ToString();
+            assistslblChange.Text = playerModel.Assists.ToString();
+            positionlblChange.Text = playerModel.Position;
+            teamLinkLabel.Text = team.TeamName;
+           
+
         }
 
         private void ShowPlayer_Load(object sender, EventArgs e)
@@ -61,6 +69,13 @@ namespace FootballStatistics
             {
                 MessageBox.Show("Succesfully updated favorite");
             }
+        }
+
+        private void teamLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ShowTeam showTeamPage = new ShowTeam(playerModel.TeamID, userID);
+
+            showTeamPage.Show();
         }
     }
 }

@@ -182,11 +182,12 @@ namespace FootballStatistics
         private async void LoadUserFavorites()
         {
             UserModel user = await userDataAccess.GetUserByIDAsync(userID);
+           
             PlayerModel player = await playerDataAccess.GetPlayerByIDAsync(user.FavoritePlayer);
             if (player != null)
                 favoritePlayerBtn.Text = player.FullName;
 
-            TeamModel team = await teamDataAccess.GetTeamByIdAsync(user.FavoritePlayer);
+            TeamModel team = await teamDataAccess.GetTeamByIdAsync(user.FavoriteTeam);
             if (team != null)
                 favoriteTeamBtn.Text = team.TeamName;
         }
@@ -202,7 +203,7 @@ namespace FootballStatistics
             UserModel user = await userDataAccess.GetUserByIDAsync(userID);
             if (user.FavoritePlayer != null)
             {
-                ShowPlayer showPlayer = new ShowPlayer(user.FavoritePlayer);
+                ShowPlayer showPlayer = new ShowPlayer(user.FavoritePlayer, userID);
                 showPlayer.Show();
             }
         }
@@ -277,7 +278,7 @@ namespace FootballStatistics
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void label1_Click(object sender, EventArgs e)

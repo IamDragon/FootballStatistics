@@ -113,13 +113,13 @@ namespace FootballStatistics
 
         private void teamAMVPLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ShowPlayer showPlayer = new ShowPlayer(teamAMVP.PlayerID.ToString());
+            ShowPlayer showPlayer = new ShowPlayer(teamAMVP.PlayerID.ToString(), userID);
             showPlayer.Show();
         }
 
         private void teamBMVPLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ShowPlayer showPlayer = new ShowPlayer(teamBMVP.PlayerID.ToString());
+            ShowPlayer showPlayer = new ShowPlayer(teamBMVP.PlayerID.ToString(), userID);
             showPlayer.Show();
         }
 
