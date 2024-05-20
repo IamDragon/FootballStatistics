@@ -16,7 +16,8 @@ internal static class Program
     static void Main()
     {
         //Connect to db
-        string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+        //string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+        string connectionString = "mongodb://user:pass@localhost:27017/";
         string databaseName = "fooballstats";
         string PlayersCollection = "players";
         string TeamsCollection = "teams";

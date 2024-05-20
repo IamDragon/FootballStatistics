@@ -182,14 +182,20 @@ namespace FootballStatistics
         private async void LoadUserFavorites()
         {
             UserModel user = await userDataAccess.GetUserByIDAsync(userID);
-           
-            PlayerModel player = await playerDataAccess.GetPlayerByIDAsync(user.FavoritePlayer);
-            if (player != null)
-                favoritePlayerBtn.Text = player.FullName;
+           if(user.FavoritePlayer != null)
+            {
+                PlayerModel player = await playerDataAccess.GetPlayerByIDAsync(user.FavoritePlayer);
+                if (player != null)
+                    favoritePlayerBtn.Text = player.FullName;
+            }
 
-            TeamModel team = await teamDataAccess.GetTeamByIdAsync(user.FavoriteTeam);
-            if (team != null)
-                favoriteTeamBtn.Text = team.TeamName;
+
+            if(user.FavoriteTeam != null)
+            {
+                TeamModel team = await teamDataAccess.GetTeamByIdAsync(user.FavoriteTeam);
+                if (team != null)
+                    favoriteTeamBtn.Text = team.TeamName;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

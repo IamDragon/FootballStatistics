@@ -15,7 +15,8 @@ namespace FootballStatistics
 {
     internal class MatchDataAccess
     {
-        private string ConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+        string ConnectionString = "mongodb://user:pass@localhost:27017/";
+        //private string ConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
         private const string DatabaseName = "fooballstats";
         private const string MatchCollection = "matches";
         private const string VoteCollection = "votes";
